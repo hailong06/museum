@@ -33,6 +33,6 @@ class Ticket extends Model
     }
     public function order_detail()
     {
-        return $this->hasOne(Order_detail::class, foreignKey:'order_id', localKey:'id');
+        return $this->hasMany(OrderDetail::class, foreignKey:'order_id', localKey:'id');
     }
 }
