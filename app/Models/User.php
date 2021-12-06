@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'phone',
+        'role',
     ];
 
     /**
@@ -41,4 +44,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function banners()
+    {
+        return $this->hasMany(Banner::class, foreignKey:'user_id', localKey:'id');
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, foreignKey:'user_id', localKey:'id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, foreignKey:'user_id', localKey:'id');
+    }
+
+    public function discounts()
+    {
+        return $this->hasMany(Discount::class, foreignKey:'user_id', localKey:'id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, foreignKey:'user_id', localKey:'id');
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, foreignKey:'user_id', localKey:'id');
+    }
 }
