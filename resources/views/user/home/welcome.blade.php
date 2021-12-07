@@ -1,4 +1,4 @@
-@extends('layouts.museum')
+@extends('user.museum')
 @section('main')
 
     <!-- Main Content-->

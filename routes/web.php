@@ -15,9 +15,9 @@ use App\Http\Controllers\Admin\AdminController;
 */
 
 Route::get('/welcome', function () {
-    return view('welcome');
+    return view('user.home.welcome');
 });
 Route::prefix('admin')->group(function(){
-    Route::get('home', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('home', [AdminController::class, 'dashboard'])->name('admin.home.dashboard');
 });
 
