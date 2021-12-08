@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,9 @@ use App\Http\Controllers\Admin\AdminController;
 */
 
 Route::get('/welcome', function () {
-    return view('welcome');
+    return view('user.home.welcome');
 });
-Route::prefix('admin')->group(function(){
-    Route::get('home', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
+    Route::get('home',['as'=>'home', 'uses'=>'admin\AdminController@dashboard']);
 });
 
