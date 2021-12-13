@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('user.home.welcome');
 });
-Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
-    Route::get('home',['as'=>'home', 'uses'=>'admin\AdminController@dashboard']);
+Route::get('/visit', function () {
+    return view('user.home.visit');
 });
+
 
