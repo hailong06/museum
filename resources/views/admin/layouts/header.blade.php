@@ -9,7 +9,7 @@
                <div class="sidebar-brand-icon rotate-n-15">
                    <i class="fas fa-laugh-wink"></i>
                </div>
-               <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+               <div class="sidebar-brand-text mx-3">Admin</div>
            </a>
 
            <!-- Divider -->
@@ -17,8 +17,7 @@
 
            <!-- Nav Item - Dashboard -->
            <li class="nav-item active">
-               <a class="nav-link" >
-                   {{-- href="{{ route('admin.dashboard') }}"> --}}
+               <a class="nav-link" href="{{ route('admin.home') }}">
                    <i class="fas fa-fw fa-home"></i>
                    <span>Dashboard</span></a>
            </li>
@@ -41,8 +40,8 @@
                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
                        <h6 class="collapse-header">Category list:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('category.index') }}">Information</a> --}}
-                       {{-- <a class="collapse-item" href="{{ route('category.create') }}">Add new Category</a> --}}
+                       <a class="collapse-item" href="{{ route('admin.category.home') }}">Information</a>
+                       <a class="collapse-item" href="{{ route('admin.category.create') }}">Add new Category</a>
                    </div>
                </div>
            </li>
@@ -51,15 +50,15 @@
            <li class="nav-item">
                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                    aria-expanded="true" aria-controls="collapseUtilities">
-                   <i class="fas fa-fw fa-wrench"></i>
-                   <span>Product Manager</span>
+                   <i class="fas fa-fw fa-blog"></i>
+                   <span>Blogs Manager</span>
                </a>
                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                    data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
                        <h6 class="collapse-header">Product List:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('product.index') }}">Information</a> --}}
-                       {{-- <a class="collapse-item" href="{{ route('product.create') }}">Add new Product</a> --}}
+                       <a class="collapse-item" href="{{ route('admin.blog.home') }}">Information</a>
+                       <a class="collapse-item" href="{{ route('admin.blog.create') }}">Add new Blog</a>
                    </div>
                </div>
            </li>
@@ -166,20 +165,6 @@
                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                        <i class="fa fa-bars"></i>
                    </button>
-
-                   <!-- Topbar Search -->
-                   <form
-                       class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                       <div class="input-group">
-                           <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                           <div class="input-group-append">
-                               <button class="btn btn-primary" type="button">
-                                   <i class="fas fa-search fa-sm"></i>
-                               </button>
-                           </div>
-                       </div>
-                   </form>
 
                    <!-- Topbar Navbar -->
                    <ul class="navbar-nav ml-auto">
