@@ -1,0 +1,36 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use App\Models\User;
+use Faker\Factory as Faker;
+
+class BlogTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $faker = Faker::create();
+        foreach (range(1,10) as $value){
+            DB::table('blogs')->insert([
+                'user_id' => '1',
+                'category_id' => '1',
+                'title' =>$faker->title(),
+                'image' => $faker->title(),
+                'sumary' => $faker->text(),
+                'content' => $faker->text(),
+                'status' => $faker->text(),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+
+            ]);
+        }
+    }
+}

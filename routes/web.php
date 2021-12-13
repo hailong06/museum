@@ -20,5 +20,9 @@ Route::get('/welcome', function () {
 Route::get('/visit', function () {
     return view('user.home.visit');
 });
-
-
+Route::get('/blog', function () {
+    return view('user.home.blog');
+});
+Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
+    Route::get('home',['as'=>'home', 'uses'=>'admin\AdminController@dashboard']);
+});
