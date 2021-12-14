@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="">Name</label>
             <input type="text" value="{{ $category->name }}" class="form-control" name="name"
-                placeholder="Input your name product">
+                placeholder="Input your name cateogory">
             @error('name')
                 <small class="help-block">{{ $message }}</small>
             @enderror
