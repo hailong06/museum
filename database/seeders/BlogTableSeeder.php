@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\BLog;
 use Faker\Factory as Faker;
 
 class BlogTableSeeder extends Seeder
@@ -26,9 +27,8 @@ class BlogTableSeeder extends Seeder
                 'image' => $faker->title(),
                 'sumary' => $faker->text(),
                 'content' => $faker->text(),
-                'status' => $faker->text(),
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'status' => Blog::BLOG_PUBLIC,
+
 
             ]);
         }
