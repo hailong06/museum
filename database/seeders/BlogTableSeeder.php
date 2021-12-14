@@ -24,7 +24,7 @@ class BlogTableSeeder extends Seeder
                 'user_id' => '1',
                 'category_id' => '1',
                 'title' =>$faker->title(),
-                'image' => $faker->title(),
+                'image' => 'resources\outsite\assert\img\sodo1.jpg',
                 'sumary' => $faker->text(),
                 'content' => $faker->text(),
                 'status' => Blog::BLOG_PUBLIC,
