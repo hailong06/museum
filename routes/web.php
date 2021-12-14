@@ -26,6 +26,17 @@ Route::get('/blog', function () {
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('home',['as'=>'home', 'uses'=>'admin\AdminController@dashboard']);
 
+    Route::group(['prefix'=>'login','as'=>'login.'], function(){
+        Route::get('/',['as'=>'/', 'uses'=>'login\AuthController@index']);
+
+        Route::post('/',['as'=>'/login', 'uses'=>'login\AuthController@login']);
+
+        Route::get('create',['as'=>'create', 'uses'=>'admin\AuthController@create']);
+
+        Route::post('store',['as'=>'store', 'uses'=>'admin\AuthController@store']);
+
+    });
+
     Route::group(['prefix'=>'category','as'=>'category.'], function(){
         Route::get('home',['as'=>'home', 'uses'=>'admin\CategoryController@index']);
 
