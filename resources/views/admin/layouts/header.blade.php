@@ -134,8 +134,10 @@
                <div id="AccountManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
                        <h6 class="collapse-header">Account List:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('account.index') }}">Information</a> --}}
-                       {{-- <a class="collapse-item" href="{{ route('account.create') }}">Add new Account</a> --}}
+                       <a class="collapse-item" href="{{ route('admin.user.admin') }}">Admin</a>
+                       <a class="collapse-item" href="{{ route('admin.user.staff') }}">Staff</a>
+                       <a class="collapse-item" href="{{ route('admin.user.user') }}">User</a>
+                       <a class="collapse-item" href="{{ route('admin.user.create') }}">Add new Account</a>
                    </div>
                </div>
            </li>
