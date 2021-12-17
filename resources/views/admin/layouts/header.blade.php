@@ -40,8 +40,8 @@
                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
                        <h6 class="collapse-header">Category list:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('admin.category.home') }}">Information</a> --}}
-                       {{-- <a class="collapse-item" href="{{ route('admin.category.create') }}">Add new Category</a> --}}
+                       <a class="collapse-item" href="{{ route('admin.category.home') }}">Information</a>
+                       <a class="collapse-item" href="{{ route('admin.category.create') }}">Add new Category</a>
                    </div>
                </div>
            </li>
@@ -57,8 +57,8 @@
                    data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
                        <h6 class="collapse-header">Product List:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('admin.blog.home') }}">Information</a> --}}
-                       {{-- <a class="collapse-item" href="{{ route('admin.blog.create') }}">Add new Blog</a> --}}
+                       <a class="collapse-item" href="{{ route('admin.blog.home') }}">Information</a>
+                       <a class="collapse-item" href="{{ route('admin.blog.create') }}">Add new Blog</a>
                    </div>
                </div>
            </li>
