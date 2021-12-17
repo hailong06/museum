@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\blog;
+namespace App\Http\Requests\category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,14 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' =>'required|max:250',
-            'sumary' => 'required|max:1000',
-            'content' => 'required',
+            'name' =>'required|max:100|unique:categories,name,'.request()->id,
         ];
     }
     public function messages()
     {
         return [
-            'title.required'=>'Tên bài viết không để trống',
-            'sumary.required'=>'Tóm lược bài viết không để trống',
-            'content.required'=>'Nội dung bài viết không để trống',
+            'name.required'=>'Tên danh mục không để trống',
+            'name.unique'=>'Danh mục này đã có trong CSDl',
         ];
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\category\StoreRequest;
-use App\Http\Requests\category\UpdateRequest;
+use App\Http\Requests\category\StoreCategoryRequest;
+use App\Http\Requests\category\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,11 +18,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = Category::orderBy('created_at', 'DESC')->where('name','like','%'.$search.'%')->paginate(5);
-        }
-        return view('admin.categories.index',compact('data'));
+        $search = request()->search;
+        $data = Category::orderBy('created_at', 'DESC')->where('name','like','%'.$search.'%')->paginate(5);
+        return view('admin.categories.index',compact('data','search'));
     }
 
     /**
@@ -42,7 +40,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         if(Category::create($request->all())){
             return redirect()->route('admin.category.home')->with('success','Add this product success');
@@ -69,7 +67,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $users = User::orderBy('id')->get();
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         return view('admin.categories.edit',compact('users','category'));
     }
 
@@ -80,9 +78,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $category = Category::find($request->id);
+        $category = Category::findOrFail($request->id);
         $category->user_id = $request->user_id;
         $category->name = $request->name;
         $category->status = $request->status;
@@ -98,7 +96,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         $category->delete();
         return redirect()->route('admin.category.home')->with('success','Delete this product success');
     }

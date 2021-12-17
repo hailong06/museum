@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Blog;
-use App\Http\Requests\blog\StoreRequest;
-use App\Http\Requests\blog\UpdateRequest;
+use App\Http\Requests\blog\StoreBLogRequest;
+use App\Http\Requests\blog\UpdateBlogRequest;
 
 class BlogController extends Controller
 {
@@ -19,11 +19,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $data = Blog::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = Blog::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
-        }
-        return view('admin.blogs.index',compact('data'));
+        $search = request()->search;
+        $data = Blog::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
+        return view('admin.blogs.index',compact('data','search'));
     }
 
     /**
@@ -44,7 +42,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(StoreBlogRequest $request)
     {
         $blog = new Blog();
         $blog->user_id = $request->user_id;
@@ -86,7 +84,7 @@ class BlogController extends Controller
     {
         $user_id = User::orderBy('id')->get();
         $category_id = Category::orderBy('id')->get();
-        $blog = Blog::find($id);
+        $blog = Blog::findOrFail($id);
         return view('admin.blogs.edit',compact('user_id','category_id','blog'));
     }
 
@@ -97,9 +95,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        $blog = Blog::find($request->id);
+        $blog = Blog::findOrFail($request->id);
         $blog->user_id = $request->user_id;
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
@@ -131,7 +129,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::findOrFail($id);
         $path = 'resources/admin/upload/blog/'.$blog->image;
         if(file_exists($path)){
             unlink($path);
