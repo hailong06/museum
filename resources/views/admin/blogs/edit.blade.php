@@ -8,10 +8,8 @@
         <div class="form-group">
             <label for="">User_id</label>
             <select name="user_id" class="form-control">
-                @foreach ($user_id as $user)
-                    <option value="{{ $user->id }}" {{ $blog->user_id == $user->id ? 'selected' : '' }}>
-                        {{ $user->name }}</option>
-                @endforeach
+                <option>Select one--</option>
+                <option value="1">Nguyễn Hải Long</option>
             </select>
             @error('user_id')
                 <small class="help-block">{{ $message }}</small>

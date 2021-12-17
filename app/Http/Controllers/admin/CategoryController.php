@@ -18,9 +18,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $search = request()->search;
-        $data = Category::orderBy('created_at', 'DESC')->where('name','like','%'.$search.'%')->paginate(5);
-        return view('admin.categories.index',compact('data','search'));
+        $data = Category::orderBy('created_at', 'DESC')->paginate(5);
+        if($search = request()->search){
+            $data = Category::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
+        }
+        return view('admin.categories.index',compact('data'));
     }
 
     /**
@@ -30,8 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $user_id= User::orderBy('name','ASC')->select('id','name')->get();
-        return view('admin.categories.add',compact('user_id'));
+        return view('admin.categories.add');
     }
 
     /**
@@ -66,9 +67,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $users = User::orderBy('id')->get();
         $category = Category::findOrFail($id);
-        return view('admin.categories.edit',compact('users','category'));
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**

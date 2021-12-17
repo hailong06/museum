@@ -7,10 +7,8 @@
         <div class="form-group">
             <label for="">User_id</label>
             <select name="user_id" class="form-control">
-                <option value="">Select one--</option>
-                @foreach ($user_id as $users)
-                    <option value="{{ $users->id }}">{{ $users->name }}</option>
-                @endforeach
+                <option>Select one--</option>
+                <option value="1">Nguyễn Hải Long</option>
             </select>
             @error('user_id')
                 <small class="help-block">{{ $message }}</small>

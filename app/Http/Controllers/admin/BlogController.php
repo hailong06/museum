@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Blog;
-use App\Http\Requests\blog\StoreBLogRequest;
+use App\Http\Requests\blog\StoreBlogRequest;
 use App\Http\Requests\blog\UpdateBlogRequest;
 
 class BlogController extends Controller
@@ -19,9 +19,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $search = request()->search;
-        $data = Blog::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
-        return view('admin.blogs.index',compact('data','search'));
+        $data = Blog::orderBy('created_at', 'DESC')->paginate(5);
+        if($search = request()->search){
+            $data = Blog::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
+        }
+        return view('admin.blogs.index',compact('data'));
     }
 
     /**
@@ -31,9 +33,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $user_id= User::orderBy('name','ASC')->select('id','name')->get();
         $category_id = Category::orderBy('name','ASC')->select('id','name')->get();
-        return view('admin.blogs.add',compact('user_id','category_id'));
+        return view('admin.blogs.add',compact('category_id'));
     }
 
     /**
@@ -42,7 +43,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBlogRequest $request)
+    public function store(StoreBLogRequest $request)
     {
         $blog = new Blog();
         $blog->user_id = $request->user_id;
@@ -82,10 +83,9 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $user_id = User::orderBy('id')->get();
         $category_id = Category::orderBy('id')->get();
         $blog = Blog::findOrFail($id);
-        return view('admin.blogs.edit',compact('user_id','category_id','blog'));
+        return view('admin.blogs.edit',compact('category_id','blog'));
     }
 
     /**
