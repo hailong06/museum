@@ -1,7 +1,7 @@
 @extends('login.master')
 @section('title', 'Dashboard')
 @section('main')
-<form class="user" action="{{ route('admin.login./login') }}" method="POST">
+<form class="user" action="{{ route('login') }}" method="POST">
     @csrf
     <div class="form-group">
         <input name="email" type="email" class="form-control form-control-user"

@@ -18,12 +18,14 @@ class AuthController extends Controller
     {
         return view('login.auth.login');
     }
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        $login = $request->only('email', 'password');
+
+        if (Auth::attempt($login)) {
             return redirect()->route('admin.home');
         }
-        return redirect()->route('admin.login./')->with('error','Fail to login');
+        return redirect()->route('login')->with('error','Fail to login');
     }
     /**
      * Show the form for creating a new resource.
@@ -86,8 +88,14 @@ class AuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }

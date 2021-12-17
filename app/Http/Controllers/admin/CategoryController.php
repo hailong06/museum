@@ -20,7 +20,7 @@ class CategoryController extends Controller
     {
         $data = Category::orderBy('created_at', 'DESC')->paginate(5);
         if($search = request()->search){
-            $data = Category::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
+            $data = Category::orderBy('created_at', 'DESC')->where('name','like','%'.$search.'%')->paginate(5);
         }
         return view('admin.categories.index',compact('data'));
     }
