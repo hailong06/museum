@@ -47,7 +47,6 @@ class CategoryController extends Controller
             return redirect()->route('admin.category.home')->with('success','Add this product success');
         }
     }
-
     /**
      * Display the specified resource.
      *

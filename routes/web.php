@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,13 @@ Route::get('/visit', function () {
 Route::get('/blog', function () {
     return view('user.home.blog');
 });
-Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
+Route::get('login',['as'=>'login', 'uses'=>'login\AuthController@index'])->middleware('guest');
+
+Route::post('login',['as'=>'login', 'uses'=>'login\AuthController@login'])->middleware('guest');
+
+Route::get('logout',['as'=>'logout', 'uses'=>'login\AuthController@destroy'])->middleware('auth');
+
+Route::group(['prefix'=>'admin', 'middleware' => 'auth' ,'as'=>'admin.'], function(){
     Route::get('home',['as'=>'home', 'uses'=>'admin\AdminController@dashboard']);
 
     Route::group(['prefix'=>'category','as'=>'category.'], function(){

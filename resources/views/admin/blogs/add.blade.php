@@ -7,8 +7,7 @@
         <div class="form-group">
             <label for="">User_id</label>
             <select name="user_id" class="form-control">
-                <option>Select one--</option>
-                <option value="1">Nguyễn Hải Long</option>
+                <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
             </select>
             @error('user_id')
                 <small class="help-block">{{ $message }}</small>
