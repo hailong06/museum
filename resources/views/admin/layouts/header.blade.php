@@ -133,15 +133,12 @@
                </a>
                <div id="AccountManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
-                       <h6 class="collapse-header">Account List:</h6>
-                       <a class="collapse-item" href="{{ route('admin.user.admin') }}">Admin</a>
-                       <a class="collapse-item" href="{{ route('admin.user.staff') }}">Staff</a>
-                       <a class="collapse-item" href="{{ route('admin.user.user') }}">User</a>
-                       <a class="collapse-item" href="{{ route('admin.user.create') }}">Add new Account</a>
+                            <h6 class="collapse-header">Account List:</h6>
+                            <a class="collapse-item" href="{{ route('admin.user.all-staff') }}">All staff</a>
+                            <a class="collapse-item" href="{{ route('admin.user.create') }}">Add new Account</a>
                    </div>
                </div>
            </li>
-
            <hr class="sidebar-divider">
 
            <!-- Sidebar Toggler (Sidebar) -->

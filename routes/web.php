@@ -74,21 +74,17 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth' ,'as'=>'admin.'], functi
         });
 
         Route::group(['prefix'=>'user', 'middleware' => 'admin','as'=>'user.'], function () {
-            Route::get('admin', ['as'=>'admin', 'uses'=>'admin\UserController@index']);
-
-            Route::get('staff', ['as'=>'staff', 'uses'=>'admin\UserController@staff']);
-
-            Route::get('user', ['as'=>'user', 'uses'=>'admin\UserController@user']);
+            Route::get('all-staff', ['as'=>'all-staff', 'uses'=>'admin\UserController@index']);
 
             Route::get('create', ['as'=>'create', 'uses'=>'admin\UserController@create']);
 
             Route::post('store', ['as'=>'store', 'uses'=>'admin\UserController@store']);
 
-            // Route::get('destroy/{id}',['as'=>'destroy', 'uses'=>'admin\UserController@destroy']);
+            Route::get('destroy/{id}',['as'=>'destroy', 'uses'=>'admin\UserController@destroy']);
 
-        // Route::get('edit/{id}',['as'=>'edit', 'uses'=>'admin\UserController@edit']);
+            Route::get('edit/{id}',['as'=>'edit', 'uses'=>'admin\UserController@edit']);
 
-        // Route::post('update',['as'=>'update', 'uses'=>'admin\UserController@update']);
+            Route::post('update',['as'=>'update', 'uses'=>'admin\UserController@update']);
         });
     });
 });

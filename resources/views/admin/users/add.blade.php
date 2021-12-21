@@ -44,8 +44,9 @@
             <select name="role" class="form-control">
                 <option value="">Select one--</option>
                 <option value="0">User</option>
-                <option value="1">Admin</option>
-                <option value="2">Staff</option>
+                <option value="1">Supper Admin</option>
+                <option value="2">Admin</option>
+                <option value="3">Staff</option>
             </select>
             @error('role')
                 <small class="help-block">{{ $message }}</small>

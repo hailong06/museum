@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Http\Requests\user\StoreRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -23,27 +24,23 @@ class UserController extends Controller
 
     public function index()
     {
-        $data = User::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = User::orderBy('created_at', 'DESC')->where('name','like','%'.$search.'%')->paginate(5);
+        if(Auth::user()->role == User::SUPPER_ADMIN_ROLE){
+            $role = User::SUPPER_ADMIN_ROLE;
+            $data = User::orderBy('created_at', 'DESC')->paginate(5);
+            if($search = request()->search){
+                $data = User::orderBy('created_at', 'DESC')->where('role','like','%'.$search.'%')->paginate(5);
+            }
+            return view('admin.users.supper_admin',compact('data','role'));
         }
-        return view('admin.users.admin',compact('data'));
-    }
-    public function staff()
-    {
-        $data = User::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = User::orderBy('created_at', 'DESC')->where('name','like','%'.$search.'%')->paginate(5);
+        if(Auth::user()->role == User::ADMIN_ROLE){
+            $role = User::SUPPER_ADMIN_ROLE;
+            $data = User::whereNotIn('role',[$role])->paginate(5);
+            if($search = request()->search){
+                $data = User::whereNotIn('role',[$role])->where('role','like','%'.$search.'%')->paginate(5);
+            }
+            return view('admin.users.supper_admin',compact('data','role'));
         }
-        return view('admin.users.staff',compact('data'));
-    }
-    public function user()
-    {
-        $data = User::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = User::orderBy('created_at', 'DESC')->where('name','like','%'.$search.'%')->paginate(5);
-        }
-        return view('admin.users.user',compact('data'));
+
     }
     /**
      * Show the form for creating a new resource.
@@ -73,7 +70,7 @@ class UserController extends Controller
         $user->save();
         event(new Registered($user));
 
-        auth()->login($user);
+        // auth()->login($user);
 
         return redirect()->route('admin.user.admin')->with('success','Add this account success');
     }
@@ -120,6 +117,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.user.all-staff')->with('success','Delete this product success');
     }
 }

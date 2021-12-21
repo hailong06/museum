@@ -10,7 +10,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    public const ROLE = 1;
+    public const SUPPER_ADMIN_ROLE = 1;
+    public const ADMIN_ROLE = 2;
+    public const STAFF_ROLE = 3;
+    public const USER_ROLE = 0;
 
     use HasApiTokens, HasFactory, Notifiable;
 

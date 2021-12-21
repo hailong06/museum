@@ -10,7 +10,7 @@
             <i class="fas fa-search"></i>
         </button>
     </form>
-    <table class="table table-hover">
+    <table id="datatable" class="table table-hover">
         <thead>
             <tr>
                 <td>Id</td>
@@ -18,6 +18,7 @@
                 <td>Email</td>
                 <td>Address</td>
                 <td>Phone</td>
+                <td>Role</td>
                 <td>Created Date</td>
                 <td>Updated Date</td>
                 <td class="text-right">Action</td>
@@ -26,30 +27,32 @@
         <tbody>
 
             @foreach ($data as $key)
-            @if ($key->role == 0)
+                <tr>
+                    <td>{{ $key->id }}</td>
+                    <td>{{ $key->name }}</td>
+                    <td>{{ $key->email }}</td>
+                    <td>{{ $key->address }}</td>
+                    <td>{{ $key->phone }}</td>
+                    <td data-column='1'>{{ $key->role }}</td>
+                    <td>{{ $key->created_at->format('d-m-Y') }}</td>
+                    <td>{{ $key->updated_at->format('d-m-Y') }}</td>
+                    <td class="text-right">
+                        @if (Auth::user()->role == $role)
+                            <a href="{{ route('admin.user.edit', $key->id) }}" class="btn btn-sm btn-success">
+                                <i class="fas fa-edit"></i>
+                            </a>
+
+                            <a href="{{ route('admin.user.destroy', $key->id) }}" class="btn btn-sm btn-danger btndelete">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
             <tr>
-                <td>{{ $key->id }}</td>
-                <td>{{ $key->name }}</td>
-                <td>{{ $key->email }}</td>
-                <td>{{ $key->address }}</td>
-                <td>{{ $key->phone }}</td>
-                <td>{{ $key->created_at->format('d-m-Y') }}</td>
-                <td>{{ $key->updated_at->format('d-m-Y') }}</td>
-                <td class="text-right">
-
-                    {{-- <a href="{{ route('admin.category.edit', $key->id) }}" class="btn btn-sm btn-success">
-                        <i class="fas fa-edit"></i>
-                    </a>
-
-                    <a href="{{ route('admin.category.destroy', $key->id) }}" class="btn btn-sm btn-danger btndelete">
-                        <i class="fas fa-trash"></i> --}}
-                    {{-- </a> --}}
-
+                <td>
                 </td>
             </tr>
-            @endif
-        @endforeach
-
         </tbody>
     </table>
     <form method="GET" action="" id="form-delete">
@@ -73,6 +76,7 @@
             }
 
         })
+
     </script>
 
 
