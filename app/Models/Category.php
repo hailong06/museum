@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    public const CATEGORY_PUBLIC = 1;
+    public const CATEGORY_PRIVATE = 0;
     use HasFactory;
 
     protected $table = 'categories';

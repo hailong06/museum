@@ -21,9 +21,11 @@ Route::get('/welcome', function () {
 Route::get('/visit', function () {
     return view('user.home.visit');
 });
-Route::get('/blog', function () {
-    return view('user.home.blog');
-});
+
+Route::get('/blog', ['as'=>'blog', 'uses'=>'BlogController@index']);
+
+Route::get('/booking', ['as'=>'booking', 'uses'=>'BookingController@index']);
+
 Route::get('login', ['as'=>'login', 'uses'=>'login\AuthController@index'])->middleware('guest');
 
 Route::post('login', ['as'=>'login', 'uses'=>'login\AuthController@login'])->middleware('guest');

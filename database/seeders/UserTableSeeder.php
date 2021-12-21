@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
                 'password' =>Hash::make('password'),
                 'address' => $faker->address(),
                 'phone' => $faker->phoneNumber(),
-                'role' => User::role,
+                'role' => User::ROLE,
 
             ]);
         }

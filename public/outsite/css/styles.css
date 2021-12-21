@@ -11098,7 +11098,7 @@ blockquote {
   #mainNav.is-fixed {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
-    top: -83px;
+    top: -104px;
     transition: transform 0.2s;
     border-bottom: 1px solid var(--bs-red);
     background-color: rgb(165 30 30 / 90%);
@@ -11136,7 +11136,7 @@ header.masthead {
   background-size: cover;
   background-attachment: scroll;
 }
-header.masthead:before {
+header.masthead::before {
   content: "";
   position: absolute;
   top: 0;

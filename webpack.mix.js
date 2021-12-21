@@ -16,3 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sourceMaps();
 mix.copyDirectory('resources/admin', 'public/admin');
 mix.copyDirectory('resources/outsite', 'public/outsite');
+mix.copyDirectory('resources/cart', 'public/cart');
+mix.copyDirectory('resources/blogs', 'public/blogs');

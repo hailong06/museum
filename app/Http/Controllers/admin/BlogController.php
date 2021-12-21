@@ -33,7 +33,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $category_id = Category::orderBy('name','ASC')->select('id','name')->get();
+        $category_id = Category::orderBy('name','ASC')->where('status',1)->select('id','name')->get();
         return view('admin.blogs.add',compact('category_id'));
     }
 
@@ -83,7 +83,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $category_id = Category::orderBy('id')->get();
+        $category_id = Category::orderBy('id')->where('status',1)->get();
         $blog = Blog::findOrFail($id);
         return view('admin.blogs.edit',compact('category_id','blog'));
     }
