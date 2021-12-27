@@ -36,6 +36,7 @@
         </div>
     @endif
     @yield('main')
+    @yield('content')
     @include('login.layouts.footer')
     @include('login.layouts.script')
 </body>
