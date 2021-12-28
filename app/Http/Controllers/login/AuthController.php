@@ -22,10 +22,14 @@ class AuthController extends Controller
     {
         $login = $request->only('email', 'password');
 
-        if (Auth::attempt($login)) {
+        $remember_me  = (!empty($request->remember_me))? true : false;
+
+        if (Auth::attempt($login, $remember_me)) {
+            $user = auth()->user();
+            Auth::login($user, true);
             return redirect()->route('admin.home');
         }
-        return redirect()->route('login')->with('error','Fail to login');
+        return redirect()->route('login')->with('error', 'Fail to login');
     }
     /**
      * Show the form for creating a new resource.
