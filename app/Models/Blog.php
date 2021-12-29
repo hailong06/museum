@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
-    public const BLOG_PUBLIC = 'public';
-    public const BLOG_PRIVATE = 'private';
+    public const BLOG_PUBLIC = 1;
+    public const BLOG_PRIVATE = 0;
     use HasFactory;
 
     protected $table = 'blogs';

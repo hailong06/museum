@@ -10,3 +10,18 @@
 <link href="{{ url('outsite') }}/css/owl.theme.default.min.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <link href="{{ url('blogs') }}/css/styles.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url('cart') }}/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/themify-icons.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="{{ url('cart') }}/css/style.css" type="text/css">
+<style type='text/css'>
+    a:hover{
+        color: red;
+    }
+    </style>
