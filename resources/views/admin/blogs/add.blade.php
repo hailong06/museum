@@ -48,8 +48,8 @@
         </div>
         <div class="form-group">
             <label for="">Content</label>
-            <textarea class="form-control" name="summernote content" id="summernote"></textarea>
-            @error('content')
+            <textarea class="form-control" name="summernote" id="summernote"></textarea>
+            @error('summernote')
                 <small class="help-block">{{ $message }}</small>
             @enderror
         </div>

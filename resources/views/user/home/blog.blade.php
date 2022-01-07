@@ -53,18 +53,18 @@
                                             <div class="col-sm-10">
                                                 <ul class="list-unstyled mb-0">
                                                     @foreach ($category as $cate)
-                                                    @php
-                                                        $checked = [];
-                                                        if(isset($_GET['filter'])){
-                                                            $checked = $_GET['filter'];
-                                                        }
-                                                    @endphp
-                                                        <li><input type="checkbox" name="filter[]" value="{{ $cate->id }}"
-                                                            @if (in_array($cate->id, $checked))
-                                                                checked
-                                                            @endif>
-                                                            {{ $cate->name }}
-                                                        </li>
+                                                        @php
+                                                            $checked = [];
+                                                            if (isset($_GET['filter'])) {
+                                                                $checked = $_GET['filter'];
+                                                            }
+                                                        @endphp
+                                                        <li><input type="checkbox" name="filter[]"
+                                                                value="{{ $cate->id }}" @if (in_array($cate->id, $checked))
+                                                            checked
+                                                    @endif>
+                                                    {{ $cate->name }}
+                                                    </li>
                                                     @endforeach
                                                 </ul>
                                             </div>

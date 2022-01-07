@@ -19,10 +19,11 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = Category::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
+        if ($search = request()->search) {
+            $data = Category::orderBy('created_at', 'DESC')
+                ->where('title', 'like', '%'.$search.'%')->paginate(5);
         }
-        return view('admin.categories.index',compact('data'));
+        return view('admin.categories.index', compact('data'));
     }
 
     /**
@@ -43,8 +44,9 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        if(Category::create($request->all())){
-            return redirect()->route('admin.category.home')->with('success','Add this product success');
+        if (Category::create($request->all())) {
+            return redirect()->route('admin.category.home')
+                ->with('success', 'Add this product success');
         }
     }
     /**
@@ -67,7 +69,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('admin.categories.edit',compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -84,7 +86,8 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->status = $request->status;
         $category->save();
-        return redirect()->route('admin.category.home')->with('Success','Update this category success');
+        return redirect()->route('admin.category.home')
+            ->with('Success', 'Update this category success');
     }
 
     /**
@@ -97,6 +100,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('admin.category.home')->with('success','Delete this product success');
+        return redirect()->route('admin.category.home')
+            ->with('success', 'Delete this product success');
     }
 }

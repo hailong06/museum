@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Discount extends Model
 {
+    public const PUBLIC_STATUS = 1;
+    public const PRIVATE_STATUS = 0;
+
     use HasFactory;
 
     protected $table = 'discounts';
@@ -14,7 +17,8 @@ class Discount extends Model
     protected $fillable = [
         'user_id',
         'code',
-        'percent',
+        'condition',
+        'reduce',
         'start',
         'end',
     ];
