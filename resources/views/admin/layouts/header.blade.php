@@ -89,16 +89,16 @@
 
            <!-- Nav Item - Charts -->
            <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#BannerManager"
-                   aria-expanded="true" aria-controls="BannerManager">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#SliderManager"
+                   aria-expanded="true" aria-controls="SliderManager">
                    <i class="fas fa-fw fa-image"></i>
-                   <span>Banner Manager</span>
+                   <span>Slider Manager</span>
                </a>
-               <div id="BannerManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+               <div id="SliderManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
-                       <h6 class="collapse-header">Banner List:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('banner.index') }}">Information</a> --}}
-                       {{-- <a class="collapse-item" href="{{ route('banner.create') }}">Add new Banner</a> --}}
+                       <h6 class="collapse-header">Slider List:</h6>
+                       <a class="collapse-item" href="{{ route('admin.slider.home') }}">Information</a>
+                       <a class="collapse-item" href="{{ route('admin.slider.create') }}">Add new Slider</a>
                    </div>
                </div>
            </li>

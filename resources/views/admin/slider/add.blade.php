@@ -1,8 +1,8 @@
 @extends('admin.master')
-@section('title', 'Add BLog')
+@section('title', 'Add slider')
 @section('main')
-    <h1>Add Blog</h1>
-    <form action="{{ route('admin.blog.store') }}" method="POST" enctype='multipart/form-data'>
+    <h1>Add Slider</h1>
+    <form action="{{ route('admin.slider.store') }}" method="POST" enctype='multipart/form-data'>
         @csrf
         <div class="form-group">
             <label for="">User_id</label>
@@ -14,21 +14,9 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Category_id</label>
-            <select name="category_id" class="form-control">
-                <option value="">Select one--</option>
-                @foreach ($category_id as $categories)
-                    <option value="{{ $categories->id }}">{{ $categories->name }}</option>
-                @endforeach
-            </select>
-            @error('category_id')
-                <small class="help-block">{{ $message }}</small>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="">Title</label>
-            <input type="text" class="form-control" name="title" placeholder="Input your title">
-            @error('title')
+            <label for="">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Input your banner name">
+            @error('name')
                 <small class="help-block">{{ $message }}</small>
             @enderror
         </div>
@@ -39,17 +27,17 @@
                 <small class="help-block">{{ $message }}</small>
             @enderror
         </div>
-        <div class="form-group">
-            <label for="">Sumary</label>
-            <input type="text" class="form-control" name="sumary" placeholder="Input your sumary">
-            @error('sumary')
+        {{-- <div class="form-group">
+            <label for="">Image</label>
+            <input type="file" class="form-control-file" name="image[]" multiple>
+            @error('image')
                 <small class="help-block">{{ $message }}</small>
             @enderror
-        </div>
+        </div> --}}
         <div class="form-group">
-            <label for="">Content</label>
-            <textarea class="form-control" name="summernote content" id="summernote"></textarea>
-            @error('content')
+            <label for="">Description</label>
+            <input type="text" class="form-control" name="description" placeholder="Input your slider description">
+            @error('description')
                 <small class="help-block">{{ $message }}</small>
             @enderror
         </div>
@@ -60,6 +48,13 @@
                     <option value="1">public</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Save Blog</button>
+        <div class="form-group">
+            <label for="">Link</label>
+            <input type="text" class="form-control" name="link" placeholder="Input your slider description">
+            @error('link')
+                <small class="help-block">{{ $message }}</small>
+            @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">Save slider</button>
     </form>
 @stop
