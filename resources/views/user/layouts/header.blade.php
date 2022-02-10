@@ -1,28 +1,29 @@
 <header class="masthead">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <div class="slideshow-container">
-
-                        <div class="owl-carousel owl-theme">
-                            <div class="item"><img src="{{ url('outsite') }}/assets/img/sodo1.jpg" alt=""><h3>Floor 1</h3></div>
-                            <div class="item"><img src="{{ url('outsite') }}/assets/img/sodo2.jpg" alt=""><h3>Floor 2</h3></div>
-                            <div class="item"><img src="{{ url('outsite') }}/assets/img/sodo3.jpg" alt=""><h3>Floor 3</h3></div>
-                        </div>
-                        {{-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-                        </div>
-                        <br>
-
-                        <div style="text-align:center">
-                          <span class="dot" onclick="currentSlide(1)"></span>
-                          <span class="dot" onclick="currentSlide(2)"></span>
-                          <span class="dot" onclick="currentSlide(3)"></span>
-                        </div> --}}
-                </div>
+    <div class="site-heading">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
+            <div class="carousel-inner">
+                @php $i = 1;@endphp
+                @foreach (App\Models\Banner::where('status', 1)->get() as $slider)
+                    <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
+                        @php $i++;@endphp
+                        <img src="{{ asset('resources/admin/upload/blog/' . $slider->image) }}" alt="Display error" width="100%" height="500">
+
+                    </div>
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 </header>

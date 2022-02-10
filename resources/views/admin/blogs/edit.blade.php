@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('title', 'Edit BLog')
 @section('main')
-    <h1>Add Blog</h1>
+    <h1>Edit Blog</h1>
     <form action="{{ route('admin.blog.update') }}" method="POST" enctype='multipart/form-data'>
         @csrf
         <input type="hidden" name="id" value="{{ $blog->id }}">
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group">
             <label for="">Content</label>
-            <textarea class="form-control" rows="5" style="resize: none" name="content">{{ $blog->content }}</textarea>
+            <textarea class="form-control" name="summernote content" id="summernote">{{ $blog->content }}</textarea>
             @error('content')
                 <small class="help-block">{{ $message }}</small>
             @enderror

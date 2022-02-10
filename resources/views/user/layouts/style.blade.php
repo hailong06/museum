@@ -20,9 +20,3 @@
 <link rel="stylesheet" href="{{ url('cart') }}/css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="{{ url('cart') }}/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="{{ url('cart') }}/css/style.css" type="text/css">
-<style type='text/css'>
-    a:hover{
-        color: red;
-    }
-
-    </style>
