@@ -15,16 +15,17 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('user.home.welcome');
-});
-Route::get('/visit', function () {
-    return view('user.home.visit');
-});
+Route::get('/welcome', ['as'=>'welcome', 'uses'=>'WelcomeController@index']);
+
+Route::get('/visit', function () {return view('user.home.visit');});
 
 Route::get('/blog', ['as'=>'blog', 'uses'=>'BlogController@index']);
 
 Route::get('/booking', ['as'=>'booking', 'uses'=>'BookingController@index']);
+
+Route::get('/search', ['as'=>'search', 'uses'=>'SearchController@index']);
+
+Route::get('/search/action', 'SearchController@action')->name('search.action');
 
 Route::get('login', ['as'=>'login', 'uses'=>'login\AuthController@index'])->middleware('guest');
 
