@@ -33,3 +33,4 @@
          }
      })
  </script>
+@yield('js')
