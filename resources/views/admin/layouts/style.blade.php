@@ -4,4 +4,10 @@
     rel="stylesheet">
 <!-- Custom styles for this template-->
 <link href="{{ url('admin') }}/css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+    #content{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+</style>
 @yield('css')

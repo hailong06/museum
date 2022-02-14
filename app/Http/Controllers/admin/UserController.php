@@ -69,10 +69,7 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->save();
         event(new Registered($user));
-
-        // auth()->login($user);
-
-        return redirect()->route('admin.user.admin')->with('success','Add this account success');
+        return redirect()->route('admin.user.all-staff')->with('success','Add this account success');
     }
 
     /**

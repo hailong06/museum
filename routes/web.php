@@ -78,6 +78,20 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth' ,'as'=>'admin.'], functi
             Route::post('update', ['as'=>'update', 'uses'=>'admin\BlogController@update']);
         });
 
+        Route::group(['prefix'=>'slider','as'=>'slider.'], function () {
+            Route::get('home', ['as'=>'home', 'uses'=>'admin\SliderController@index']);
+
+            Route::get('create', ['as'=>'create', 'uses'=>'admin\SliderController@create']);
+
+            Route::post('store', ['as'=>'store', 'uses'=>'admin\SliderController@store']);
+
+            Route::get('destroy/{id}', ['as'=>'destroy', 'uses'=>'admin\SliderController@destroy']);
+
+            Route::get('edit/{id}', ['as'=>'edit', 'uses'=>'admin\SliderController@edit']);
+
+            Route::post('update', ['as'=>'update', 'uses'=>'admin\SliderController@update']);
+        });
+
         Route::group(['prefix'=>'user', 'middleware' => 'admin','as'=>'user.'], function () {
             Route::get('all-staff', ['as'=>'all-staff', 'uses'=>'admin\UserController@index']);
 
