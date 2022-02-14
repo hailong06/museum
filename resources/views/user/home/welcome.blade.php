@@ -7,14 +7,13 @@
                 <!-- Post preview-->
                 @foreach ($data as $datas)
                     <div class="post-preview">
-                        <a href="">
-                            <h2 class="post-title">{{ $datas->title }}</h2>
-                            <h3 class="post-subtitle">{{ $datas->sumary }}</h3>
-                        </a>
+                        <h2 class="post-title">{{ $datas->title }}</h2>
+                        <h4 class="post-subtitle">{{ $datas->sumary }}</h4>
                         <p class="post-meta">
                             Posted by on {{ $datas->updated_at }}
                         </p>
                     </div>
+                    <a href="{{ route('blog-detail', $datas->id) }}">Read more</a>
                     <hr class="my-4" />
                 @endforeach
                 <div class="">

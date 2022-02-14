@@ -19,7 +19,7 @@
                                         <div class="small text-muted">{{ $blogs->updated_at }}</div>
                                         <h2 class="card-title">{{ $blogs->title }}</h2>
                                         <p class="card-text">{{ $blogs->sumary }}</p>
-                                        <a class="btn btn-primary" href="#!">Read more →</a>
+                                        <a class="btn btn-primary" href="{{ route('blog-detail', $blogs->id) }}">Read more →</a>
                                     </div>
                                 </div>
                             @endforeach

@@ -21,6 +21,8 @@ Route::get('/visit', function () {return view('user.home.visit');});
 
 Route::get('/blog', ['as'=>'blog', 'uses'=>'BlogController@index']);
 
+Route::get('/blog-detail/{id}', ['as'=>'blog-detail', 'uses'=>'BlogController@detail']);
+
 Route::get('/booking', ['as'=>'booking', 'uses'=>'BookingController@index']);
 
 Route::get('/search', ['as'=>'search', 'uses'=>'SearchController@index']);
