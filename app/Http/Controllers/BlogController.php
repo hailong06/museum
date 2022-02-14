@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Blog;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BlogController extends Controller
 {
@@ -19,5 +20,17 @@ class BlogController extends Controller
             $data = Blog::whereIn('category_id',$checked)->where('status',BLog::BLOG_PUBLIC)->paginate(3);
         }
         return view('user.home.blog',compact('data','category'));
+    }
+    public function detail($id)
+    {
+        try{
+            $category_id = Category::orderBy('id')->where('status',1)->get();
+            $blog = Blog::findOrFail($id);
+            return view('user.home.blog_detail',compact('blog','category_id'));
+        }
+        catch(ModelNotFoundException $err){
+            return view('errors.404');
+        }
+
     }
 }
