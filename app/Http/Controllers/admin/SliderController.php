@@ -19,10 +19,11 @@ class SliderController extends Controller
     public function index()
     {
         $data = Banner::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = Banner::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
+        if ($search = request()->search) {
+            $data = Banner::orderBy('created_at', 'DESC')
+                ->where('name', 'like', '%'.$search.'%')->paginate(5);
         }
-        return view('admin.slider.index',compact('data'));
+        return view('admin.slider.index', compact('data'));
     }
 
     /**
@@ -53,12 +54,14 @@ class SliderController extends Controller
         $path = 'resources/admin/upload/blog/';
         $get_name_image = $get_image->getClientOriginalName();
         $name_image = current(explode('.', $get_name_image));
-        $new_image = $name_image.rand(0,1000).'.'.$get_image->getClientOriginalExtension();
+        $new_image = $name_image.rand(0, 1000).'.'.$get_image
+            ->getClientOriginalExtension();
         $get_image->move($path, $new_image);
 
         $slider->image = $new_image;
         $slider->save();
-        return redirect()->route('admin.slider.home')->with('success','Add this slider success');
+        return redirect()->route('admin.slider.home')
+            ->with('success', 'Add this slider success');
     }
 
     /**
@@ -81,7 +84,7 @@ class SliderController extends Controller
     public function edit($id)
     {
         $slider = Banner::findOrFail($id);
-        return view('admin.slider.edit',compact('slider'));
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
@@ -102,18 +105,20 @@ class SliderController extends Controller
         $get_image = $request->image;
         if ($get_image) {
             $path = 'resources/admin/upload/blog/'.$slider->image;
-            if(file_exists($path)){
+            if (file_exists($path)) {
                 unlink($path);
             }
             $path = 'resources/admin/upload/blog/';
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image.rand(0, 1000).'.'.$get_image->getClientOriginalExtension();
+            $new_image = $name_image.rand(0, 1000).'.'.$get_image
+                ->getClientOriginalExtension();
             $get_image->move($path, $new_image);
             $slider->image = $new_image;
         }
         $slider->save();
-        return redirect()->route('admin.slider.home')->with('success','Update this slider success');
+        return redirect()->route('admin.slider.home')
+            ->with('success', 'Update this slider success');
     }
 
     /**
@@ -126,10 +131,11 @@ class SliderController extends Controller
     {
         $slider = Banner::findOrFail($id);
         $path = 'resources/admin/upload/blog/'.$slider->image;
-        if(file_exists($path)){
+        if (file_exists($path)) {
             unlink($path);
         }
         $slider->delete();
-        return redirect()->route('admin.slider.home')->with('success','Delete this product success');
+        return redirect()->route('admin.slider.home')
+            ->with('success', 'Delete this product success');
     }
 }

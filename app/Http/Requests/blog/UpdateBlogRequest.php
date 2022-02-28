@@ -26,7 +26,7 @@ class UpdateBlogRequest extends FormRequest
         return [
             'title' =>'required|max:250',
             'sumary' => 'required|max:1000',
-            'content' => 'required',
+            'summernote' => 'required',
         ];
     }
     public function messages()
@@ -34,7 +34,7 @@ class UpdateBlogRequest extends FormRequest
         return [
             'title.required'=>'Tên bài viết không để trống',
             'sumary.required'=>'Tóm lược bài viết không để trống',
-            'content.required'=>'Nội dung bài viết không để trống',
+            'summernote.required'=>'Nội dung bài viết không để trống',
         ];
     }
 }

@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
+mix.copyDirectory('resources/js', 'public/js');
 mix.copyDirectory('resources/admin', 'public/admin');
 mix.copyDirectory('resources/outsite', 'public/outsite');
 mix.copyDirectory('resources/cart', 'public/cart');

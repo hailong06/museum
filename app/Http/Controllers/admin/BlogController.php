@@ -20,10 +20,11 @@ class BlogController extends Controller
     public function index()
     {
         $data = Blog::orderBy('created_at', 'DESC')->paginate(5);
-        if($search = request()->search){
-            $data = Blog::orderBy('created_at', 'DESC')->where('title','like','%'.$search.'%')->paginate(5);
+        if ($search = request()->search) {
+            $data = Blog::orderBy('created_at', 'DESC')
+                ->where('title', 'like', '%'.$search.'%')->paginate(5);
         }
-        return view('admin.blogs.index',compact('data'));
+        return view('admin.blogs.index', compact('data'));
     }
 
     /**
@@ -33,8 +34,10 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $category_id = Category::orderBy('name','ASC')->where('status',1)->select('id','name')->get();
-        return view('admin.blogs.add',compact('category_id'));
+        $category_id = Category::orderBy('name', 'ASC')
+            ->where('status', 1)
+            ->select('id', 'name')->get();
+        return view('admin.blogs.add', compact('category_id'));
     }
 
     /**
@@ -50,18 +53,20 @@ class BlogController extends Controller
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->sumary = $request->sumary;
-        $blog->content = $request->content;
+        $blog->content = $request->summernote;
         $blog->status = $request->status;
         $get_image = $request->image;
         $path = 'resources/admin/upload/blog/';
         $get_name_image = $get_image->getClientOriginalName();
         $name_image = current(explode('.', $get_name_image));
-        $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+        $new_image = $name_image.rand(0, 99).'.'.$get_image
+        ->getClientOriginalExtension();
         $get_image->move($path, $new_image);
 
         $blog->image = $new_image;
         $blog->save();
-        return redirect()->route('admin.blog.home')->with('success','Add this blog success');
+        return redirect()->route('admin.blog.home')
+            ->with('success', 'Add this blog success');
     }
 
     /**
@@ -83,9 +88,10 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $category_id = Category::orderBy('id')->where('status',1)->get();
+        $category_id = Category::orderBy('id')
+            ->where('status', 1)->get();
         $blog = Blog::findOrFail($id);
-        return view('admin.blogs.edit',compact('category_id','blog'));
+        return view('admin.blogs.edit', compact('category_id', 'blog'));
     }
 
     /**
@@ -102,23 +108,25 @@ class BlogController extends Controller
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->sumary = $request->sumary;
-        $blog->content = $request->content;
+        $blog->content = $request->summernote;
         $blog->status = $request->status;
         $get_image = $request->image;
         if ($get_image) {
             $path = 'resources/admin/upload/blog/'.$blog->image;
-            if(file_exists($path)){
+            if (file_exists($path)) {
                 unlink($path);
             }
             $path = 'resources/admin/upload/blog/';
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image.rand(0, 99).'.'.$get_image->getClientOriginalExtension();
+            $new_image = $name_image.rand(0, 99).'.'.$get_image
+                ->getClientOriginalExtension();
             $get_image->move($path, $new_image);
             $blog->image = $new_image;
         }
         $blog->save();
-        return redirect()->route('admin.blog.home')->with('success','Update this blog success');
+        return redirect()->route('admin.blog.home')
+            ->with('success', 'Update this blog success');
     }
 
     /**
@@ -131,10 +139,11 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $path = 'resources/admin/upload/blog/'.$blog->image;
-        if(file_exists($path)){
+        if (file_exists($path)) {
             unlink($path);
         }
         $blog->delete();
-        return redirect()->route('admin.blog.home')->with('success','Delete this product success');
+        return redirect()->route('admin.blog.home')
+            ->with('success', 'Delete this product success');
     }
 }

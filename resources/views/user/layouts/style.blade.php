@@ -20,3 +20,22 @@
 <link rel="stylesheet" href="{{ url('cart') }}/css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="{{ url('cart') }}/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="{{ url('cart') }}/css/style.css" type="text/css">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Eonasdan/bootstrap-datetimepicker@a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" type="text/css" media="all">
+<style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      background-color: #a4aeb8b2;
+      padding: 10px;
+    }
+    .grid-item {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+    .total{
+        text-decoration: line-through;
+    }
+</style>

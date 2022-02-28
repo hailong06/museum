@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
+    public const BANNER_PUBLIC = 1;
+    public const BANNER_PRIVATE = 0;
+
     use HasFactory;
 
     protected $table = 'banners';

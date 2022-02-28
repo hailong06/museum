@@ -104,7 +104,7 @@ a:focus {
 
 ul,
 ol {
-	padding: 0;
+	padding: 18;
 	margin: 0;
 }
 
@@ -2665,10 +2665,12 @@ ol {
 }
 
 .cart-table table tr td {
-	text-align: center;
-	padding-bottom: 34px;
+	/* text-align: center; */
+	padding: 15px;
 }
-
+.cart-table .al {
+	text-align: center;
+}
 .cart-table table tr td.first-row {
 	padding-top: 30px;
 }
@@ -2820,7 +2822,7 @@ ol {
 
 .proceed-checkout ul li {
 	list-style: none;
-	font-size: 16px;
+	font-size: 33px;
 	font-weight: 700;
 	color: #252525;
 	text-transform: uppercase;
