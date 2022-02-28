@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     */
+
 class UserController extends Controller
 {
     /**
@@ -21,24 +28,32 @@ class UserController extends Controller
     {
         $this->middleware('admin');
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        if(Auth::user()->role == User::SUPPER_ADMIN_ROLE){
+        if (Auth::user()->role == User::SUPPER_ADMIN_ROLE) {
             $role = User::SUPPER_ADMIN_ROLE;
             $data = User::orderBy('created_at', 'DESC')->paginate(5);
-            if($search = request()->search){
-                $data = User::orderBy('created_at', 'DESC')->where('role','like','%'.$search.'%')->paginate(5);
+            if ($search = request()->search) {
+                $data = User::orderBy('created_at', 'DESC')
+                    ->where('role', 'like', '%'.$search.'%')
+                    ->paginate(5);
             }
-            return view('admin.users.supper_admin',compact('data','role'));
+            return view('admin.users.supper_admin', compact('data', 'role'));
         }
-        if(Auth::user()->role == User::ADMIN_ROLE){
+        if (Auth::user()->role == User::ADMIN_ROLE) {
             $role = User::SUPPER_ADMIN_ROLE;
-            $data = User::whereNotIn('role',[$role])->paginate(5);
-            if($search = request()->search){
-                $data = User::whereNotIn('role',[$role])->where('role','like','%'.$search.'%')->paginate(5);
+            $data = User::whereNotIn('role', [$role])->paginate(5);
+            if ($search = request()->search) {
+                $data = User::whereNotIn('role', [$role])
+                    ->where('role', 'like', '%'.$search.'%')
+                    ->paginate(5);
             }
-            return view('admin.users.supper_admin',compact('data','role'));
+            return view('admin.users.supper_admin', compact('data', 'role'));
         }
 
     }
@@ -53,9 +68,8 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
@@ -69,7 +83,9 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->save();
         event(new Registered($user));
-        return redirect()->route('admin.user.all-staff')->with('success','Add this account success');
+        return
+        redirect()->route('admin.user.all-staff')
+            ->with('success', 'Add this account success');
     }
 
     /**
@@ -116,6 +132,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('admin.user.all-staff')->with('success','Delete this product success');
+        return redirect()->route('admin.user.all-staff')
+            ->with('success', 'Delete this product success');
     }
 }

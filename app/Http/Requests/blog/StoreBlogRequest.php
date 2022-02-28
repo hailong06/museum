@@ -25,10 +25,11 @@ class StoreBlogRequest extends FormRequest
     {
         return [
             'title' =>'required|unique:blogs|max:250',
-            'image' => 'required|image|mimes:jpg,svg,png,gif,jpeg|max:2048|dimensions:min_width=100,
+            'image' => 'required|image|mimes:jpg,svg,png,gif,
+            jpeg|max:2048|dimensions:min_width=100,
             min_height:100,max_width:1000,max_height:1000',
             'sumary' => 'required|max:1000',
-            'content' => 'required',
+            'summernote' => 'required',
         ];
     }
     public function messages()
@@ -38,7 +39,7 @@ class StoreBlogRequest extends FormRequest
             'title.unique'=>'Tên bài viết này đã có trong CSDl',
             'image.required'=>'Hình ảnh bài viết không để trống',
             'sumary.required'=>'Tóm lược bài viết không để trống',
-            'content.required'=>'Nội dung bài viết không để trống',
+            'summernote.required'=>'Nội dung bài viết không để trống',
         ];
     }
 }
