@@ -15,6 +15,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public const STAFF_ROLE = 3;
     public const USER_ROLE = 0;
 
+    public $timestamps = true;
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

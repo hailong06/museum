@@ -14,6 +14,8 @@ class Discount extends Model
 
     protected $table = 'discounts';
 
+    public $timestamps = true;
+
     protected $fillable = [
         'user_id',
         'code',

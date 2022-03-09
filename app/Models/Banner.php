@@ -12,6 +12,8 @@ class Banner extends Model
 
     use HasFactory;
 
+    public $timestamps = true;
+
     protected $table = 'banners';
 
     protected $fillable = [

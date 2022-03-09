@@ -11,6 +11,8 @@ class Blog extends Model
     public const BLOG_PRIVATE = 0;
     use HasFactory;
 
+    public $timestamps = true;
+
     protected $table = 'blogs';
 
     protected $fillable = [
