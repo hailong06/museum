@@ -245,6 +245,31 @@ Route::group(
                 );
 
                 Route::group(
+                    ['prefix'=>'order','as'=>'order.'], function () {
+                        Route::get(
+                            'home', [
+                                'as'=>'home',
+                                'uses'=>'admin\OrderController@index'
+                            ]
+                        );
+
+                        Route::get(
+                            'filter', [
+                                'as'=>'filter',
+                                'uses'=>'admin\OrderController@filter'
+                            ]
+                        );
+
+                        Route::get(
+                            'detail/{id}', [
+                                'as'=>'detail',
+                                'uses'=>'admin\OrderController@detail'
+                            ]
+                        );
+                    }
+                );
+
+                Route::group(
                     [
                         'prefix'=>'user', 'middleware' => 'admin','as'=>'user.'
                     ], function () {

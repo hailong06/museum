@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'vnp_url' => env('EXAMPLE_URL', 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'),
+    'vnp_url' => env('VNP_URL', 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'),
 
     'vnp_has' => env('VNP_HASH_SECRET', 'UOFHNFDAJJBOKCHVHDXQWKRZQRJGBELK'),
 

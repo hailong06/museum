@@ -42,7 +42,7 @@
                 <label>
                     @php
                         $vnp_SecureHash = $_GET['vnp_SecureHash'];
-                        $vnp_HashSecret = "UOFHNFDAJJBOKCHVHDXQWKRZQRJGBELK";
+                        $vnp_HashSecret = config('app.vnp_has');
                         $inputData = [];
                         foreach ($_GET as $key => $value) {
                             if (substr($key, 0, 4) == 'vnp_') {

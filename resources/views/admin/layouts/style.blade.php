@@ -9,5 +9,13 @@
         margin-left: 20px;
         margin-right: 20px;
     }
+    .flex-container {
+        display: flex;
+        background-color: #fff;
+
+    }
+    .fil {
+        margin: 10px;
+    }
 </style>
 @yield('css')
