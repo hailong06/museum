@@ -15,6 +15,12 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'vnp_url' => env('EXAMPLE_URL', 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'),
+
+    'vnp_has' => env('VNP_HASH_SECRET', 'UOFHNFDAJJBOKCHVHDXQWKRZQRJGBELK'),
+
+    'vnp_tmn_code' => env('VNP_TMN_CODE', 'H8ID7CD6'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -176,6 +182,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         // Other service providers...
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+
     ],
 
     /*
@@ -230,6 +238,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
 
     ],

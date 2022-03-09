@@ -38,16 +38,23 @@ Route::post(
 );
 
 Route::post(
+    '/payment', [
+        'as'=>'payment',
+        'uses'=>'BookingController@payment'
+    ]
+);
+
+Route::post(
     '/discount', [
         'as'=>'discount',
         'uses'=>'BookingController@discount'
     ]
 );
 
-Route::post(
-    '/check-coupon', [
-        'as'=>'checkcoupon',
-        'uses'=>'BookingController@checkCoupon'
+Route::get(
+    '/vnpay-return', [
+        'as'=>'vnpayreturn',
+        'uses'=>'BookingController@vnpayReturn'
     ]
 );
 

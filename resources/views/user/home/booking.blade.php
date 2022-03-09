@@ -102,6 +102,7 @@
     <script>
         $(".form-infor").hide();
         var totalActual = 0;
+        var prices = 0;
         $(document).ready(function() {
             $('.next').click(function(event, index) {
                 const val_tickets = $('input[name=tickets]');
@@ -131,8 +132,10 @@
                     $(".form-infor").show();
                     $(".form-ticket").hide();
                 };
-                const cartTotal = array.length > 0 ? array.map(item=>item.total).reduce((p,c) =>  p + c ) : 0 ;
+                const cartTotal = array.length > 0 ? array.map(item => item.total).reduce((p, c) => p + c) :
+                    0;
                 totalActual += cartTotal;
+                prices += cartTotal;
             });
             $('.return').click(function(event) {
                 event.preventDefault();
@@ -197,13 +200,14 @@
 
                             $.ajaxSetup({
                                 headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 }
                             });
 
-                            $("#apply").click(function() {
+                            $("#apply").click(function(event) {
                                 const coupon = $('#coupon').val();
+                                prices = totalActual;
+                                event.preventDefault();
                                 $.ajax({
                                     method: 'POST',
                                     url: "/discount",
@@ -212,26 +216,62 @@
                                     },
                                     type: 'json',
                                     success: function(data) {
+                                        var zero = 0;
                                         if (coupon.length == 0) {
                                             swal("Please enter the coupon you want!",
                                                 " ", "error");
+                                            document.getElementById("discount").innerHTML = zero;
+                                            $("#total").removeClass("total");
+                                            document.getElementById( "actual-total").innerHTML = totalActual;
+                                            $("#coupon").val("");
+                                            prices = totalActual;
                                         } else {
                                             var reduce = data.reduce;
                                             if (reduce == 0) {
                                                 swal("Coupon code does not exist or has expired!",
                                                     "Sorry for the inconvenience",
                                                     "error");
+                                                document.getElementById("discount") .innerHTML = zero;
+                                                $("#total").removeClass("total");
+                                                document.getElementById( "actual-total") .innerHTML = totalActual;
+                                                $("#coupon").val("");
+                                                prices = totalActual;
+
                                             } else {
-                                                document.getElementById(
-                                                        "discount")
-                                                    .innerHTML = reduce;
-                                                $("#total").addClass("total");
+                                                document.getElementById("discount").innerHTML = reduce;
+                                                $("#total").addClass( "total");
                                                 var price = totalActual - reduce;
-                                                document.getElementById(
-                                                        "actual-total")
-                                                    .innerHTML = price;
+                                                document.getElementById("actual-total").innerHTML = price;
+                                                prices = price;
                                             }
                                         }
+                                    }
+                                });
+                            });
+
+                            $('#pay').click(function(event) {
+                                var paymentMethod = $('input[name=paymentMethod]:checked').val();
+                                const coupon = $('#coupon').val();
+                                event.preventDefault();
+
+                                $.ajax({
+                                    method: 'POST',
+                                    url: "/payment",
+                                    data: {
+                                        date: date,
+                                        tickets: tickets,
+                                        username: username,
+                                        useremail: useremail,
+                                        userphone: userphone,
+                                        paymentMethod: paymentMethod,
+                                        coupon: coupon,
+                                        totalActual: totalActual,
+                                        prices: prices,
+                                    },
+                                    type: 'json',
+                                    success: function(data) {
+                                        location.href = data.data;
+                                        // console.log('ok')
                                     }
                                 });
                             });

@@ -15,6 +15,14 @@ return [
 
     'default' => env('MAIL_MAILER', 'smtp'),
 
+
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
@@ -78,6 +86,7 @@ return [
                 'log',
             ],
         ],
+
     ],
 
     /*
@@ -92,8 +101,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'Hailong0962@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Bao tang my thuat Viet Nam'),
     ],
 
     /*

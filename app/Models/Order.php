@@ -12,17 +12,17 @@ class Order extends Model
     protected $table = 'orders';
 
     protected $fillable = [
-        'user_id',
+        'code_order',
+        'custumer_name',
+        'custumer_email',
+        'custumer_phone',
         'total_money',
         'actual_total',
         'payment_method',
+        'discount_id',
+        'date',
         'status',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, foreignKey:'user_id', ownerKey:'id');
-    }
 
     public function order_detail()
     {
