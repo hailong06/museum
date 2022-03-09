@@ -13,6 +13,8 @@ class Category extends Model
 
     protected $table = 'categories';
 
+    public $timestamps = true;
+
     protected $fillable = [
         'user_id',
         'name',

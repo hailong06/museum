@@ -11,6 +11,8 @@ class Order extends Model
 
     protected $table = 'orders';
 
+    public $timestamps = true;
+
     protected $fillable = [
         'code_order',
         'custumer_name',

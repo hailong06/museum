@@ -11,6 +11,8 @@ class Order_detail extends Model
 
     protected $table = 'order_details';
 
+    public $timestamps = true;
+
     protected $fillable = [
         'order_id',
         'ticket_id',

@@ -11,6 +11,7 @@ use App\Models\Blog;
 use Carbon\Exceptions\Exception;
 use Mail;
 use Config;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -290,6 +291,7 @@ class BookingController extends Controller
                                 'payment_method' => $infor['InforPaymentMethod'],
                                 'discount_id' => $coupon_id['id'],
                                 'date' => $infor['InforDate'],
+                                'created_at' => Carbon::now(),
                             ]
                         );
                     foreach ($infor['InforTicket'] as $item) {
@@ -299,6 +301,7 @@ class BookingController extends Controller
                                 'order_id' => $orders_id,
                                 'ticket_id' => $item['id'],
                                 'quantity' => $item['value'],
+                                'created_at' => Carbon::now(),
                             ]
                         );
                     }
