@@ -254,8 +254,11 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
 #search, #location{
     width: 20px;
 }
-#live_search, #location{
+#live_search{
     width: 320px;
+}
+#location{
+    width: 50px;
 }
 #price{
     color: red;

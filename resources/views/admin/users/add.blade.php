@@ -8,35 +8,35 @@
             <label for="">Name</label>
             <input type="text" class="form-control" name="name" placeholder="Input your name">
             @error('name')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Email</label>
             <input type="text" class="form-control" name="email" placeholder="Input your email ">
             @error('email')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Password</label>
             <input type="password" class="form-control" name="password" placeholder="Input your password">
             @error('password')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Address</label>
             <input type="text" class="form-control" name="address" placeholder="Input your address">
             @error('address')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Phone</label>
             <input type="string" class="form-control" name="phone" placeholder="Input your phone">
             @error('phone')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
@@ -49,7 +49,7 @@
                 <option value="3">Staff</option>
             </select>
             @error('role')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <button type="submit" class="btn btn-primary">Save Data</button>

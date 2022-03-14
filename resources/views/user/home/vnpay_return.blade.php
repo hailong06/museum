@@ -1,5 +1,6 @@
 @extends('user.museum')
 @section('main')
+</header>
     @csrf
     <div class="container">
         <div class="header clearfix">

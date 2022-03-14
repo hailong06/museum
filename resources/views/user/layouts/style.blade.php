@@ -25,8 +25,8 @@
 <style>
     .grid-container {
       display: grid;
-      grid-template-columns: auto auto auto auto;
-      background-color: #a4aeb8b2;
+      grid-template-columns: auto auto;
+      background-color: #ffffff;
       padding: 10px;
     }
     .grid-item {
@@ -34,8 +34,13 @@
       padding: 20px;
       font-size: 20px;
       text-align: center;
+      width: 31rem;
+      height:500px;
     }
     .total{
         text-decoration: line-through;
+    }
+    .card1{
+        padding: 20px;
     }
 </style>

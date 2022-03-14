@@ -11,7 +11,7 @@
                 <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
             </select>
             @error('user_id')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@
             <input type="text" value="{{ $category->name }}" class="form-control" name="name"
                 placeholder="Input your name cateogory">
             @error('name')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">

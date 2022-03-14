@@ -11,7 +11,7 @@
                 <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
             </select>
             @error('user_id')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
@@ -23,14 +23,14 @@
                 @endforeach
             </select>
             @error('category_id')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Title</label>
             <input type="text" value="{{ $blog->title }}" class="form-control" name="title" placeholder="Input your title">
             @error('title')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
@@ -38,21 +38,21 @@
             <input type="file" class="form-control-file" name="image">
             <img src="{{ asset('resources/admin/upload/blog/'.$blog->image) }}" height="180" width="300">
             @error('image')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Sumary</label>
             <input type="text" value="{{ $blog->sumary }}" class="form-control" name="sumary" placeholder="Input your sumary">
             @error('sumary')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Content</label>
-            <textarea class="form-control" name="summernote" id="summernote">{{ $blog->content }}</textarea>
-            @error('summernote')
-                <small class="help-block">{{ $message }}</small>
+            <textarea name="content" id="area1" rows="10" cols="130">{{ $blog->content }}</textarea>
+            @error('content')
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">

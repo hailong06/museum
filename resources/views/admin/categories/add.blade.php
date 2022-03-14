@@ -10,15 +10,14 @@
             <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
         </select>
         @error('user_id')
-            <small class="help-block">{{ $message }}</small>
+            <small style="color:red" class="help-block">{{ $message }}</small>
         @enderror
     </div>
     <div class="form-group">
         <label for="">Name</label>
         <input type="text" class="form-control" name="name" placeholder="Input your name category">
         @error('name')
-        <small class="help-block">{{ $message }}</small>
-
+            <small style="color:red" class="help-block">{{ $message }}</small>
         @enderror
     </div>
     <div class="form-group">

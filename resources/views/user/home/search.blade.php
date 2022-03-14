@@ -1,6 +1,6 @@
 @extends('user.museum')
 @section('main')
-
+</header>
     <div class="container">
         <div class="form-group" align="center">
             <input type="text" name="search" id="live_search" class="form-control" placeholder="Search Customer Data" />

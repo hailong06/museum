@@ -14,7 +14,7 @@ class BlogController extends Controller
         $data = Blog::orderBy('created_at', 'DESC')
             ->where('status', BLog::BLOG_PUBLIC)->paginate(3);
         $category = Category::where('status', Category::CATEGORY_PUBLIC)
-            ->paginate(1000000);
+            ->get();
         if ($search = request()->search) {
             $data = Blog::orderBy('created_at', 'DESC')
                 ->where('title', 'like', '%'.$search.'%')->paginate(3);
