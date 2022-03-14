@@ -113,7 +113,7 @@
                <div id="OrderManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
                        <h6 class="collapse-header">Order List:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('order.index') }}">Information</a> --}}
+                       <a class="collapse-item" href="{{ route('admin.order.home') }}">Information</a>
                        {{-- <a class="collapse-item" href="{{ route('order.create') }}">Add new Order</a> --}}
                    </div>
                </div>

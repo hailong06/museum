@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    public const ORDER_PUBLIC = 1;
+    public const ORDER_PRIVATE = 0;
+
     use HasFactory;
 
     protected $table = 'orders';

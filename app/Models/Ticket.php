@@ -9,6 +9,9 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    public const TICKET_PUBLIC = 1;
+    public const TICKET_PRIVTE = 0;
+
     protected $table = 'tickets';
 
     public $timestamps = true;

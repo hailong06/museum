@@ -30,7 +30,7 @@ class SearchController extends Controller
                     foreach ($data as $blogs) {
                         $output .= "
                             <tr>
-                                <a href=''><td>'.$blogs->title.'</td></a>
+                                <td>'.$blogs->title.'</td>
                                 <td>'.$blogs->sumary.'</td>
                                 <td>'.$blogs->content.'</td>
                             </tr>
