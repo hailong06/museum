@@ -38,6 +38,5 @@
     @include('admin.layouts.script')
 
 </body>
-@include('admin.layouts.summernote')
 
 </html>

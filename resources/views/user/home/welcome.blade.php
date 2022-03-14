@@ -25,29 +25,29 @@
       <span class="visually-hidden">Next</span>
     </button>
 </div>
-</div>
 </header>
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="col-md-10 col-lg-8 col-xl-7 card1 grid-container" >
                 <!-- Post preview-->
                 @foreach ($data as $datas)
-                    <div class="post-preview">
-                        <h2 class="post-title">{{ $datas->title }}</h2>
-                        <h4 class="post-subtitle">{{ $datas->sumary }}</h4>
-                        <p class="post-meta">
-                            Posted by on {{ $datas->updated_at }}
-                        </p>
-                    </div>
-                    <a href="{{ route('blog-detail', $datas->id) }}">Read more</a>
-                    <hr class="my-4" />
+                    <div class="card grid-item card1">
+                        <img src="{{ asset('resources/admin/upload/blog/'.$datas->image) }}" height="300" width="600" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ $datas->title }}</h5>
+                          <p class="card-text">{{ $datas->sumary }}</p>
+                          <a href="{{ route('blog-detail', $datas->id) }}" class="btn btn-primary">Read more</a>
+                        </div>
+                      </div>
                 @endforeach
-                <div class="">
-                    {{ $data->appends(request()->all())->links() }}
-                </div>
+
+            </div>
+            <div class="">
+                {{ $data->appends(request()->all())->links() }}
             </div>
         </div>
     </div>
 
+    <br>
 @stop()

@@ -77,7 +77,6 @@
             </thead>
             <tbody>
                 @foreach ($data as $key)
-                <input type="hidden" value="{{ $key->id }}" id="id">
                     <tr>
                         <td>{{ $key->code_order }}</td>
                         <td>{{ $key->custumer_name }}</td>

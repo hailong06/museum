@@ -22,35 +22,35 @@
                 @endforeach
             </select>
             @error('category_id')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Title</label>
             <input type="text" class="form-control" name="title" placeholder="Input your title">
             @error('title')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Image</label>
             <input type="file" class="form-control-file" name="image">
             @error('image')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Sumary</label>
             <input type="text" class="form-control" name="sumary" placeholder="Input your sumary">
             @error('sumary')
-                <small class="help-block">{{ $message }}</small>
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
             <label for="">Content</label>
-            <textarea class="form-control" name="summernote" id="summernote"></textarea>
-            @error('summernote')
-                <small class="help-block">{{ $message }}</small>
+            <textarea name="content" id="area1" rows="10" cols="130" placeholder="Enter the content please"></textarea>
+            @error('content')
+                <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">

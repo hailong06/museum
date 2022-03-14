@@ -1,6 +1,6 @@
 @extends('user.museum')
 @section('main')
-
+</header>
     <section class="shopping-cart spad">
         @csrf
         <div class="container">
