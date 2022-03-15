@@ -2,20 +2,10 @@
 @section('title', 'Edit BLog')
 @section('main')
     <h1>Edit Blog</h1>
-    <form action="{{ route('admin.blog.update') }}" method="POST" enctype='multipart/form-data'>
+    <form action="{{ route('admin.blog.update', $blog->id) }}" method="POST" enctype='multipart/form-data'>
         @csrf
-        <input type="hidden" name="id" value="{{ $blog->id }}">
         <div class="form-group">
-            <label for="">User_id</label>
-            <select name="user_id" class="form-control">
-                <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
-            </select>
-            @error('user_id')
-                <small style="color:red" class="help-block">{{ $message }}</small>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="">Category_id</label>
+            <label for="">Category</label>
             <select name="category_id" class="form-control">
                 @foreach ($category_id as $category)
                     <option value="{{ $category->id }}" {{ $blog->category_id == $category->id ? 'selected' : '' }}>
@@ -66,7 +56,13 @@
                     <option value="0">private</option>
                 @endif
             </select>
+            @error('status')
+                <small style="color:red" class="help-block">{{ $message }}</small>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Save Blog</button>
     </form>
+    <br>
+    <a href="{{ route('admin.blog.home') }}">Back</a>
+    <hr>
 @stop

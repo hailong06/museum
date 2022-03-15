@@ -144,7 +144,7 @@ Route::group(
                         );
 
                         Route::post(
-                            'update', [
+                            'update/{id}', [
                                 'as'=>'update',
                                 'uses'=>'admin\CategoryController@update'
                             ]
@@ -190,7 +190,7 @@ Route::group(
                         );
 
                         Route::post(
-                            'update', [
+                            'update/{id}', [
                                 'as'=>'update',
                                 'uses'=>'admin\BlogController@update'
                             ]
@@ -236,7 +236,7 @@ Route::group(
                         );
 
                         Route::post(
-                            'update', [
+                            'update/{id}', [
                                 'as'=>'update',
                                 'uses'=>'admin\SliderController@update'
                             ]
@@ -281,6 +281,13 @@ Route::group(
                         );
 
                         Route::get(
+                            'filter', [
+                                'as'=>'filter',
+                                'uses'=>'admin\UserController@filter'
+                            ]
+                        );
+
+                        Route::get(
                             'create', [
                                 'as'=>'create',
                                 'uses'=>'admin\UserController@create'
@@ -309,7 +316,7 @@ Route::group(
                         );
 
                         Route::post(
-                            'update', [
+                            'update/{id}', [
                                 'as'=>'update', 'uses'=>'admin\UserController@update'
                             ]
                         );

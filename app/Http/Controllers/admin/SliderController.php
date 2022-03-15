@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Banner;
 use App\Http\Requests\slider\StoreSliderRequest;
 use App\Http\Requests\slider\UpdateSliderRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SliderController extends Controller
 {
@@ -19,11 +20,12 @@ class SliderController extends Controller
     public function index()
     {
         $data = Banner::orderBy('created_at', 'DESC')->paginate(5);
+        $user = User::select('id', 'name')->get();
         if ($search = request()->search) {
             $data = Banner::orderBy('created_at', 'DESC')
                 ->where('name', 'like', '%'.$search.'%')->paginate(5);
         }
-        return view('admin.slider.index', compact('data'));
+        return view('admin.slider.index', compact('data', 'user'));
     }
 
     /**
@@ -45,7 +47,7 @@ class SliderController extends Controller
     public function store(StoreSliderRequest $request)
     {
         $slider = new Banner();
-        $slider->user_id = $request->user_id;
+        $slider->user_id = Auth::user()->id;
         $slider->name = $request->name;
         $slider->description = $request->description;
         $slider->status = $request->status;
@@ -94,10 +96,10 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSliderRequest $request,Banner $slider)
+    public function update(UpdateSliderRequest $request, $id)
     {
-        $slider = Banner::findOrFail($request->id);
-        $slider->user_id = $request->user_id;
+        $slider = Banner::findOrFail($id);
+        $slider->user_id = Auth::user()->id;
         $slider->name= $request->name;
         $slider->description = $request->description;
         $slider->status = $request->status;

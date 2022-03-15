@@ -35,12 +35,21 @@
       font-size: 20px;
       text-align: center;
       width: 31rem;
-      height:500px;
+      height:570px;
     }
     .total{
         text-decoration: line-through;
     }
     .card1{
         padding: 20px;
+    }
+    .form-card-css {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 16px;     /* fallback */
+        max-height: 48px;      /* fallback */
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
     }
 </style>

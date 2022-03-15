@@ -76,11 +76,11 @@
                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
                    <i class="fas fa-fw fa-folder"></i>
-                   <span>Blogs</span>
+                   <span>Discount Code</span>
                </a>
                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
-                       <h6 class="collapse-header">Blogs List:</h6>
+                       <h6 class="collapse-header">Discount Code List:</h6>
                        {{-- <a class="collapse-item" href="{{ route('blog.index') }}">Information</a> --}}
                        {{-- <a class="collapse-item" href="{{ route('blog.create') }}">Add new Blog</a> --}}
                    </div>
@@ -118,27 +118,28 @@
                    </div>
                </div>
            </li>
-
+           @if (Auth::user()->role == 1 || Auth::user()->role == 2)
            <!-- Divider -->
            <hr class="sidebar-divider d-none d-md-block">
            <div class="sidebar-heading">
                Admin
            </div>
-
            <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#AccountManager"
-                   aria-expanded="true" aria-controls="AccountManager">
-                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                   <span>Account Manager</span>
-               </a>
-               <div id="AccountManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                   <div class="bg-white py-2 collapse-inner rounded">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#AccountManager"
+                    aria-expanded="true" aria-controls="AccountManager">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Account Manager</span>
+                </a>
+                <div id="AccountManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Account List:</h6>
-                            <a class="collapse-item" href="{{ route('admin.user.all-staff') }}">All staff</a>
+                            <a class="collapse-item" href="{{ route('admin.user.all-staff') }}">All User</a>
                             <a class="collapse-item" href="{{ route('admin.user.create') }}">Add new Account</a>
-                   </div>
-               </div>
-           </li>
+                    </div>
+                </div>
+            </li>
+           @endif
+
            <hr class="sidebar-divider">
 
            <!-- Sidebar Toggler (Sidebar) -->

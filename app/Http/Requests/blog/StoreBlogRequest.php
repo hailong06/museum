@@ -29,7 +29,8 @@ class StoreBlogRequest extends FormRequest
             jpeg|max:2048|dimensions:min_width=100,
             min_height:100,max_width:1000,max_height:1000',
             'sumary' => 'required|max:250',
-            'content' => 'required|max: 9999|min: 100',
+            'content' => 'required|min: 100',
+            'status' => 'required'
         ];
     }
     public function messages()
@@ -40,6 +41,7 @@ class StoreBlogRequest extends FormRequest
             'image.required'=>'Hình ảnh bài viết không để trống',
             'sumary.required'=>'Tóm lược bài viết không để trống',
             'content.required'=>'Nội dung bài viết không để trống',
+            'status.required'=>'Status bài viết không để trống',
         ];
     }
 }

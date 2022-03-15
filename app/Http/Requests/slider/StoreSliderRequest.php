@@ -29,6 +29,7 @@ class StoreSliderRequest extends FormRequest
             min_height:100,max_width:1000,max_height:1000',
             'description' => 'required|max:1000',
             'link' => 'required',
+            'status' => 'required',
         ];
     }
     public function messages()

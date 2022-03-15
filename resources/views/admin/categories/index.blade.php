@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <td>Id</td>
-                <td>User_id</td>
+                <td>User</td>
                 <td>Name</td>
                 <td>Status</td>
                 <td>Created Date</td>
@@ -23,10 +23,17 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $i =1;
+            @endphp
             @foreach ($data as $key)
                 <tr>
-                    <td>{{ $key->id }}</td>
-                    <td>{{ $key->user_id }}</td>
+                    <td>{{ $i++ }}</td>
+                    @foreach ($user as $users)
+                    @if ($users->id == $key->user_id)
+                    <td>{{ $users->name }}</td>
+                    @endif
+                    @endforeach
                     <td>{{ $key->name }}</td>
                     <td>
                         @if ($key->status == 0)

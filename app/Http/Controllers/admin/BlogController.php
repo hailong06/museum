@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Blog;
 use App\Http\Requests\blog\StoreBlogRequest;
 use App\Http\Requests\blog\UpdateBlogRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -20,11 +21,13 @@ class BlogController extends Controller
     public function index()
     {
         $data = Blog::orderBy('created_at', 'DESC')->paginate(5);
+        $user = User::select('id', 'name')->get();
+        $cate = Category::select('id', 'name')->get();
         if ($search = request()->search) {
             $data = Blog::orderBy('created_at', 'DESC')
                 ->where('title', 'like', '%'.$search.'%')->paginate(5);
         }
-        return view('admin.blogs.index', compact('data'));
+        return view('admin.blogs.index', compact('data','user', 'cate'));
     }
 
     /**
@@ -35,7 +38,7 @@ class BlogController extends Controller
     public function create()
     {
         $category_id = Category::orderBy('name', 'ASC')
-            ->where('status', 1)
+            ->where('status', Category::CATEGORY_PUBLIC)
             ->select('id', 'name')->get();
         return view('admin.blogs.add', compact('category_id'));
     }
@@ -49,7 +52,7 @@ class BlogController extends Controller
     public function store(StoreBLogRequest $request)
     {
         $blog = new Blog();
-        $blog->user_id = $request->user_id;
+        $blog->user_id = Auth::user()->id;
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->sumary = $request->sumary;
@@ -89,7 +92,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         $category_id = Category::orderBy('id')
-            ->where('status', 1)->get();
+            ->where('status', Category::CATEGORY_PUBLIC)->get();
         $blog = Blog::findOrFail($id);
         return view('admin.blogs.edit', compact('category_id', 'blog'));
     }
@@ -101,10 +104,10 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBlogRequest $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, $id)
     {
-        $blog = Blog::findOrFail($request->id);
-        $blog->user_id = $request->user_id;
+        $blog = Blog::findOrFail($id);
+        $blog->user_id = Auth::user()->id;
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->sumary = $request->sumary;

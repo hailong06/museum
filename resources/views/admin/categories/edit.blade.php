@@ -4,16 +4,6 @@
     <h1>Edit Category</h1>
     <form action="{{ route('admin.category.update', $category->id) }}" method="POST" role='form'>
         @csrf
-        <input type="hidden" name="id" value="{{ $category->id }}">
-        <div class="form-group">
-            <label for="">User_id</label>
-            <select name="user_id" class="form-control">
-                <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
-            </select>
-            @error('user_id')
-                <small style="color:red" class="help-block">{{ $message }}</small>
-            @enderror
-        </div>
         <div class="form-group">
             <label for="">Name</label>
             <input type="text" value="{{ $category->name }}" class="form-control" name="name"
@@ -33,6 +23,9 @@
                     <option value="0">private</option>
                 @endif
             </select>
+            @error('status')
+                <small style="color:red" class="help-block">{{ $message }}</small>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Save Data</button>
     </form>

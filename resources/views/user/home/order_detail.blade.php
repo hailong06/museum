@@ -2,8 +2,6 @@
     <h1>Details</h1>
     <h6 style="color: red, font-style  : italic">*Please check your information before payment</h6>
     <br>
-    <a href="{{ route('booking') }}">Back</a>
-
     <form>
         @csrf
         <div class="col-lg-6">
@@ -83,11 +81,11 @@
                             <h4>Payment Total: </h4>
                             <li id="actual-total" name="tickets_actual_total">{{ number_format(array_sum($total)) }}</li>
                         </ul>
+                            <a href="{{ route('booking') }}" class="btn btn-danger">Cancel</a>
                             <a class="btn btn-primary" id="pay">Payment</a>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    <br>
 </div>
