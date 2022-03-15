@@ -25,6 +25,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'name' =>'required|max:100|unique:categories,name,'.request()->id,
+            'status' => 'required',
         ];
     }
     public function messages()

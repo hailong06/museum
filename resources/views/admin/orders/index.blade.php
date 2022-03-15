@@ -122,8 +122,7 @@
 @stop()
 @section('js')
 <script>
-    $("#count").hide();
-     $(document).ready(function() {
+    $(document).ready(function() {
         $('#search-date').click(function(event) {
             var month_order = $('#month').val();
             var date_order = $('#date').val();

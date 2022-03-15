@@ -8,6 +8,7 @@ use App\Http\Requests\category\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -19,11 +20,12 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::orderBy('created_at', 'DESC')->paginate(5);
+        $user = User::select('id','name')->get();
         if ($search = request()->search) {
             $data = Category::orderBy('created_at', 'DESC')
-                ->where('title', 'like', '%'.$search.'%')->paginate(5);
+                ->where('name', 'like', '%'.$search.'%')->paginate(5);
         }
-        return view('admin.categories.index', compact('data'));
+        return view('admin.categories.index', compact('data', 'user'));
     }
 
     /**
@@ -44,10 +46,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        if (Category::create($request->all())) {
-            return redirect()->route('admin.category.home')
+        $category = new Category();
+        $category->user_id = Auth::user()->id;
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->save();
+        return redirect()->route('admin.category.home')
                 ->with('success', 'Add this product success');
-        }
     }
     /**
      * Display the specified resource.
@@ -79,15 +84,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($request->id);
-        $category->user_id = $request->user_id;
+        $category = Category::findOrFail($id);
+        $category->user_id = Auth::user()->id;
         $category->name = $request->name;
         $category->status = $request->status;
         $category->save();
         return redirect()->route('admin.category.home')
-            ->with('Success', 'Update this category success');
+            ->with('success', 'Update this category success');
     }
 
     /**

@@ -14,12 +14,10 @@
         <thead>
             <tr>
                 <td>Id</td>
-                <td>User_id</td>
-                <td>Category_id</td>
+                <td>User</td>
+                <td>Category</td>
                 <td>Title</td>
                 <td>Image</td>
-                <td>Sumary</td>
-                <td>Content</td>
                 <td>Status</td>
                 <td>Created Date</td>
                 <td>Updated Date</td>
@@ -27,15 +25,24 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $i = 1;
+            @endphp
             @foreach ($data as $blog)
                 <tr>
-                    <td>{{ $blog->id }}</td>
-                    <td>{{ $blog->user_id }}</td>
-                    <td>{{ $blog->category_id }}</td>
-                    <td>{{ $blog->title }}</td>
-                    <td><img src="{{ asset('resources/admin/upload/blog/'.$blog->image) }}" height="180" width="300" alt="Blog image"></td>
-                    <td>{{ $blog->sumary }}</td>
-                    <td>{{ $blog->content }}</td>
+                    <td>{{ $i++ }}</td>
+                    @foreach ($user as $users)
+                    @if ($users->id == $blog->user_id)
+                    <td>{{ $users->name }}</td>
+                    @endif
+                    @endforeach
+                    @foreach ($cate as $cates)
+                    @if ($cates->id == $blog->category_id)
+                    <td style="width: 200px">{{ $cates->name }}</td>
+                    @endif
+                    @endforeach
+                    <td style="width: 200px">{{ $blog->title }}</td>
+                    <td><img src="{{ asset('resources/admin/upload/blog/'.$blog->image) }}" height="100" width="200" alt="Blog image"></td>
                     <td>
                         @if ($blog->status == 0)
                             <span class="badge badge-danger">Private</span>

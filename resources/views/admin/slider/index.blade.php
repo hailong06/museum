@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <td>Id</td>
-                <td>User_id</td>
+                <td>User</td>
                 <td>Name</td>
                 <td>Image</td>
                 <td>Description</td>
@@ -26,10 +26,17 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $i = 1;
+            @endphp
             @foreach ($data as $slider)
                 <tr>
-                    <td>{{ $slider->id }}</td>
-                    <td>{{ $slider->user_id }}</td>
+                    <td>{{ $i++ }}</td>
+                    @foreach ($user as $users)
+                    @if ($users->id == $slider->user_id)
+                    <td>{{ $users->name }}</td>
+                    @endif
+                    @endforeach
                     <td>{{ $slider->name }}</td>
                     <td><img src="{{ asset('resources/admin/upload/blog/'.$slider->image) }}" height="80" width="130" alt="Slider image"></td>
                     <td>{{ $slider->description }}</td>

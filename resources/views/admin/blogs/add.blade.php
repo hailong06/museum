@@ -5,16 +5,7 @@
     <form action="{{ route('admin.blog.store') }}" method="POST" enctype='multipart/form-data'>
         @csrf
         <div class="form-group">
-            <label for="">User_id</label>
-            <select name="user_id" class="form-control">
-                <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
-            </select>
-            @error('user_id')
-                <small class="help-block">{{ $message }}</small>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="">Category_id</label>
+            <label for="">Category</label>
             <select name="category_id" class="form-control">
                 <option value="">Select one--</option>
                 @foreach ($category_id as $categories)
@@ -59,6 +50,9 @@
                     <option value="0">private</option>
                     <option value="1">public</option>
             </select>
+            @error('status')
+                <small style="color:red" class="help-block">{{ $message }}</small>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Save Blog</button>
     </form>

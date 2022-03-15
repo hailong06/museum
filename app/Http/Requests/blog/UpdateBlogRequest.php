@@ -24,9 +24,13 @@ class UpdateBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' =>'required|max:250',
-            'sumary' => 'required|max:1000',
-            'content' => 'required',
+            'title' =>'required|max:250|unique:blogs,title,'.request()->id,
+            'image' => 'image|mimes:jpg,svg,png,gif,
+            jpeg|max:2048|dimensions:min_width=100,
+            min_height:100,max_width:1000,max_height:1000',
+            'sumary' => 'required|max:250',
+            'content' => 'required|min: 100',
+            'status' => 'required'
         ];
     }
     public function messages()

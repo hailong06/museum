@@ -24,9 +24,12 @@ class UpdateSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|max:250',
+            'name' =>'required|max:250|unique:banners,name,'.request()->id,
+            'image' => 'required|image|mimes:jpg,svg,png,gif,jpeg|max:2048|dimensions:min_width=100,
+            min_height:100,max_width:1000,max_height:1000',
             'description' => 'required|max:1000',
             'link' => 'required',
+            'status' => 'required',
         ];
     }
     public function messages()

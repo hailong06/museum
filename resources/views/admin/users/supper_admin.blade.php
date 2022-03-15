@@ -1,15 +1,40 @@
 @extends('admin.master')
 @section('title', 'User List')
 @section('main')
-
-    <form action="" method="get" class="form-inline">
-        <div class="form-group">
-            <input class="form-control" name="search" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-search"></i>
-        </button>
-    </form>
+<div class="container">
+    <div>
+        <form >
+            <div class="flex-container">
+                @csrf
+                <div class="fil">
+                    <div class="form-group">
+                        <input class="form-control" id="search" name="search" placeholder="Search name">
+                    </div>
+                </div>
+                <div class="input-group fil">
+                    <select name="user" id="user" class="form-control">
+                        <option value="0">User</option>
+                        @if (Auth::user()->role == $role_super)
+                        <option value="1">SuperAdmin</option>
+                        @endif
+                        <option value="2">Admin</option>
+                        <option value="3">Staff</option>
+                    </select>
+                </div>
+                <div class="fil">
+                    <button id="search-user" type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div align="center" id="count" class='fil'>
+        <label>Number of data:
+            <span id="count_data">{{ $count_data }}</span>
+        </label>
+    </div>
     <table id="datatable" class="table table-hover">
         <thead>
             <tr>
@@ -18,26 +43,26 @@
                 <td>Email</td>
                 <td>Address</td>
                 <td>Phone</td>
-                <td>Role</td>
                 <td>Created Date</td>
                 <td>Updated Date</td>
                 <td class="text-right">Action</td>
             </tr>
         </thead>
         <tbody>
-
+            @php
+                $i = 1;
+            @endphp
             @foreach ($data as $key)
                 <tr>
-                    <td>{{ $key->id }}</td>
+                    <td>{{ $i++ }}</td>
                     <td>{{ $key->name }}</td>
                     <td>{{ $key->email }}</td>
-                    <td>{{ $key->address }}</td>
+                    <td style="width: 260px">{{ $key->address }}</td>
                     <td>{{ $key->phone }}</td>
-                    <td data-column='1'>{{ $key->role }}</td>
                     <td>{{ $key->created_at->format('d-m-Y') }}</td>
                     <td>{{ $key->updated_at->format('d-m-Y') }}</td>
                     <td class="text-right">
-                        @if (Auth::user()->role == $role)
+                        @if (Auth::user()->role == $role_super)
                             <a href="{{ route('admin.user.edit', $key->id) }}" class="btn btn-sm btn-success">
                                 <i class="fas fa-edit"></i>
                             </a>
@@ -49,22 +74,18 @@
                     </td>
                 </tr>
             @endforeach
-            <tr>
-                <td>
-                </td>
-            </tr>
         </tbody>
     </table>
     <form method="GET" action="" id="form-delete">
         @csrf
     </form>
     <hr>
-    <div class="">
+    <div class="pagi">
         {{ $data->appends(request()->all())->links() }}
     </div>
+</div>
 @stop()
 @section('js')
-
     <script>
         $('.btndelete').click(function(ev) {
             ev.preventDefault();
@@ -76,9 +97,34 @@
             }
 
         })
+        $(document).ready(function() {
+            $('#search-user').click(function(event) {
+                var user = $('#user').val();
+                var search = $('#search').val();
+                event.preventDefault();
 
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route('admin.user.filter') }}',
+                    data: {
+                        user: user,
+                        search: search,
+                    },
+                    type: 'json',
+                    success: function(data) {
+                        $(".pagi").remove();
+                        // $("#count").show();
+                        $('tbody').html(data.data);
+                        $('#count_data').text(data.count_data);
+                    }
+                });
+            });
+        });
     </script>
-
-
-
 @stop()

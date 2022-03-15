@@ -54,7 +54,7 @@ class OrderController extends Controller
                 ->get();
             $count_data = $data->count();
             if ($count_data > 0) {
-                $output = view('admin.output.output', compact('data','count_data','ticket_data', 'discount_data'))->render();
+                $output = view('admin.output.output_order', compact('data','count_data','ticket_data', 'discount_data'))->render();
             } else {
                 $output = '
                 <tr>
@@ -159,7 +159,6 @@ class OrderController extends Controller
      */
     public function detail($id)
     {
-        // dd($id);
         $data_order = Order::findOrFail((int)$id);
         $ticket = Ticket::select('id','name')->get();
         $data_order_detail = OrderDetail::orderBy('created_at','DESC')->get();
