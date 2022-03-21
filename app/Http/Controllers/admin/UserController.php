@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\user\StoreRequest;
+use App\Http\Requests\user\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -51,13 +52,6 @@ class UserController extends Controller
                 ->paginate(5);
             $count_data = User::whereNotIn('role', [$role_super])
                 ->where('role', User::USER_ROLE)->count();
-            // if ($search = request()->search) {
-            // $data = User::whereNotIn('role', [$role])
-            //         ->where('name', 'like', '%'.$search.'%')
-            //         ->where('role',User::USER_ROLE)
-            //         ->paginate(5);
-            // $count_data = $data->count();
-            // }
             return view('admin.users.supper_admin', compact('data', 'role_super', 'count_data'));
         }
     }
@@ -269,45 +263,6 @@ class UserController extends Controller
                     'count_data' => $count_data,
                 ];
                 return response()->json($array);
-            // } elseif ($data['user'] == 1 && $data['search'] == null) {
-            //     $data = User::orderBy('created_at', 'DESC')
-            //         ->where('role', User::SUPPER_ADMIN_ROLE)
-            //         ->get();
-            //     $count_data = $data->count();
-            //     if ($count_data > 0) {
-            //         $output = view('admin.output.output_user', compact('data', 'count_data', 'role_super'))->render();
-            //     } else {
-            //         $output = '
-            //     <tr>
-            //         <td align="center" colspan="12">No Data Found</td>
-            //     </tr>
-            //     ';
-            //     }
-            //     $array = [
-            //         'data' => $output,
-            //         'count_data' => $count_data,
-            //     ];
-            //     return response()->json($array);
-            // } elseif ($data['user'] == 1 && $data['search'] != null) {
-            //     $data = User::orderBy('created_at', 'DESC')
-            //         ->where('role', User::SUPPER_ADMIN_ROLE)
-            //         ->where('name', 'like', '%'.$data['search'].'%')
-            //         ->get();
-            //     $count_data = $data->count();
-            //     if ($count_data > 0) {
-            //         $output = view('admin.output.output_user', compact('data', 'count_data', 'role_super'))->render();
-            //     } else {
-            //         $output = '
-            //     <tr>
-            //         <td align="center" colspan="12">No Data Found</td>
-            //     </tr>
-            //     ';
-            //     }
-            //     $array = [
-            //         'data' => $output,
-            //         'count_data' => $count_data,
-            //     ];
-            //     return response()->json($array);
             } elseif ($data['user'] == 2 && $data['search'] == null) {
                 $data = User::orderBy('created_at', 'DESC')
                     ->where('role', User::ADMIN_ROLE)
@@ -451,7 +406,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -461,9 +417,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->save();
+        return
+            redirect()->route('admin.user.all-staff')
+            ->with('success', 'Add this account success');
     }
 
     /**

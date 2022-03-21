@@ -34,21 +34,21 @@
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7 card1 grid-container">
+            <div class="grid row row-cols-2 card1 ">
                 <!-- Post preview-->
                 @foreach ($data as $datas)
-                    <div class="card grid-item card1">
+                    <div class="card g-col-6 ">
                         <img src="{{ asset('resources/admin/upload/blog/' . $datas->image) }}" height="300" width="600"
                             class="card-img-top" alt="...">
                         <div class="card-body">
                             <h4 class="card-title">{{ $datas->title }}</h4>
                             <h5 class="card-text">{{ $datas->sumary }}</h5><br>
-                            <p class="form-card-css">{{ $datas->content }}</p>
+                            <p class="form-card-css">{!! Str::limit($datas->content, 200) !!}</p>
                             <a href="{{ route('blog-detail', $datas->id) }}" class="btn btn-primary">Read more</a>
                         </div>
                     </div>
-                @endforeach
 
+                @endforeach
             </div>
             <div class="">
                 {{ $data->appends(request()->all())->links() }}
