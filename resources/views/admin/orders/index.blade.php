@@ -47,6 +47,12 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="input-group fil">
+                        <select class="form-control" id="method" name="method">
+                            <option value="vnpay">VnPay</option>
+                            <option value="momo">Momo</option>
+                        </select>
+                    </div>
                     <div class="fil">
                         <input type="button" value="Search" class=" btn btn-primary" id="search-date">
                     </div>
@@ -127,6 +133,7 @@
             var month_order = $('#month').val();
             var date_order = $('#date').val();
             var ticket_date_order = $('#ticket').val();
+            var method_order = $('#method').val();
             event.preventDefault();
 
             $.ajaxSetup({
@@ -142,6 +149,7 @@
                     date_order: date_order,
                     ticket_date_order: ticket_date_order,
                     month_order: month_order,
+                    method_order: method_order,
                 },
                 type: 'json',
                 success: function(data){

@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label for="">Content</label>
-            <textarea name="content" id="area1" rows="10" cols="130">{{ $blog->content }}</textarea>
+            <textarea name="content" class="form-control my-editor" id="area1" rows="10" cols="130">{{ $blog->content }}</textarea>
             @error('content')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror

@@ -247,11 +247,6 @@
                                                                 <p style="font-size: 14px; line-height: 140%;">&nbsp;
                                                                 </p>
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                    style="font-size: 18px; line-height: 25.2px; font-family: 'courier new', courier;">Code order:
-                                                                    {{ $infor["vnp_TxnRef"] }}</span></p>
-                                                                <p style="font-size: 14px; line-height: 140%;">&nbsp;
-                                                                </p>
-                                                                <p style="font-size: 14px; line-height: 140%;"><span
                                                                         style="font-size: 18px; line-height: 25.2px; font-family: 'courier new', courier;">Discount:
                                                                         {{ number_format($coupon_id['reduce']) }}</span>
                                                                 </p>
@@ -305,7 +300,7 @@
                                                             </div>
                                                             <div class="visible-print text-center">
                                                                 <?php
-                                                                    $qrCodeAsPng = QrCode::format('png')->size(100)->generate($infor["vnp_TxnRef"]);
+                                                                    $qrCodeAsPng = QrCode::format('png')->size(100)->generate($infor["orderId"]);
                                                                 ?>
                                                                 <img src="{{ $message->embedData($qrCodeAsPng, 'nameForAttachment.png') }}" />
                                                                 <p style="font-size: 14px; line-height: 140%;"><span

@@ -58,6 +58,13 @@ Route::get(
     ]
 );
 
+Route::get(
+    '/momo-return', [
+        'as'=>'momoreturn',
+        'uses'=>'BookingController@momoReturn'
+    ]
+);
+
 Route::get('/search', ['as'=>'search', 'uses'=>'SearchController@index']);
 
 Route::get('/search/action', 'SearchController@action')->name('search.action');
@@ -96,6 +103,10 @@ Route::group(
     }
 );
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 Route::group(
     ['prefix'=>'admin', 'middleware' => 'auth' ,'as'=>'admin.'], function () {
         Route::group(
@@ -105,6 +116,8 @@ Route::group(
                         'as'=>'home', 'uses'=>'admin\AdminController@dashboard'
                     ]
                 );
+
+
 
                 Route::group(
                     ['prefix'=>'category','as'=>'category.'], function () {
@@ -172,6 +185,13 @@ Route::group(
                             'store', [
                                 'as'=>'store',
                                 'uses'=>'admin\BlogController@store'
+                            ]
+                        );
+
+                        Route::post(
+                            'upload', [
+                                'as'=>'upload',
+                                'uses'=>'admin\BlogController@upload'
                             ]
                         );
 

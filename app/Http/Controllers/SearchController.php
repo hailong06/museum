@@ -27,15 +27,8 @@ class SearchController extends Controller
                     ->get();
                 $total_row = $data->count();
                 if ($total_row > 0) {
-                    foreach ($data as $blogs) {
-                        $output .= "
-                            <tr>
-                                <td>'.$blogs->title.'</td>
-                                <td>'.$blogs->sumary.'</td>
-                                <td>'.$blogs->content.'</td>
-                            </tr>
-                            ";
-                    }
+                    $output = view('user.output.output', compact('data'))->render();
+
                 } else {
                     $output = '
                     <tr>

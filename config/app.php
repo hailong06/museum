@@ -21,6 +21,12 @@ return [
 
     'vnp_tmn_code' => env('VNP_TMN_CODE', 'H8ID7CD6'),
 
+    "momo_partnerCode" => env("MOMO_PARTNERCODE", "MOMOBKUN20180529"),
+
+    "momo_accessKey" => env("MOMO_ACCESSKEY", "klm05TvNBzhg7h7j"),
+
+    "momo_secretKey" => env("MOMO_SECRETKEY", "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa"),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

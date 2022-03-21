@@ -11,17 +11,18 @@
                         <!-- Blog entries-->
                         <div class="col-lg-8">
                             @foreach ($data as $blogs)
-                                <div class="card mb-4">
-                                    <a href="#!"><img class="card-img-top"
-                                            src="{{ asset('resources/admin/upload/blog/' . $blogs->image) }}" height="300"
-                                            width="350" alt="Blog image" /></a>
-                                    <div class="card-body">
-                                        <div class="small text-muted">{{ $blogs->updated_at }}</div>
-                                        <h2 class="card-title">{{ $blogs->title }}</h2>
-                                        <p class="card-text">{{ $blogs->sumary }}</p>
-                                        <a class="btn btn-primary" href="{{ route('blog-detail', $blogs->id) }}">Read more →</a>
-                                    </div>
+                            <div class="card mb-4">
+                                <a href="#!"><img class="card-img-top"
+                                        src="{{ asset('resources/admin/upload/blog/' . $blogs->image) }}" height="300"
+                                        width="350" alt="Blog image" /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">{{ $blogs->updated_at }}</div>
+                                    <h2 class="card-title">{{ $blogs->title }}</h2>
+                                    <p class="card-text">{{ $blogs->sumary }}</p>
+                                    <p class="form-card-css">{!! Str::limit($blogs->content, 200) !!}</p>
+                                    <a class="btn btn-primary" href="{{ route('blog-detail', $blogs->id) }}">Read more →</a>
                                 </div>
+                            </div>
                             @endforeach
                             <p></p>
                             <div class="">

@@ -56,7 +56,7 @@ class BlogController extends Controller
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->sumary = $request->sumary;
-        $blog->content = strip_tags($request->content);
+        $blog->content = $request->content;
         $blog->status = $request->status;
         $get_image = $request->image;
         $path = 'resources/admin/upload/blog/';
@@ -111,7 +111,7 @@ class BlogController extends Controller
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->sumary = $request->sumary;
-        $blog->content = strip_tags($request->content);
+        $blog->content = $request->content;
         $blog->status = $request->status;
         $get_image = $request->image;
         if ($get_image) {

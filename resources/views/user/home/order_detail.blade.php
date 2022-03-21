@@ -34,6 +34,9 @@
                             width="70">
                     </td>
                 </tr>
+                @error('paymentMethod')
+                    <small style="color:red" class="help-block">{{ $message }}</small>
+                @enderror
             </table>
         </div>
         <br>
@@ -68,7 +71,8 @@
                     <div class="proceed-checkout">
                         <ul>
                             <input type="text" placeholder="Input your discount coupon" name="coupon" id="coupon">
-                            <br><p></p>
+                            <br>
+                            <p></p>
                             <a class="btn btn-success" id="apply">Apply</a>
                             <h5>Discount:</h5>
                             <li id="discount" name="discount" value="0">0</li>
@@ -79,10 +83,11 @@
                         </ul>
                         <ul>
                             <h4>Payment Total: </h4>
-                            <li id="actual-total" name="tickets_actual_total">{{ number_format(array_sum($total)) }}</li>
+                            <li id="actual-total" name="tickets_actual_total">{{ number_format(array_sum($total)) }}
+                            </li>
                         </ul>
-                            <a href="{{ route('booking') }}" class="btn btn-danger">Cancel</a>
-                            <a class="btn btn-primary" id="pay">Payment</a>
+                        <a href="{{ route('booking') }}" class="btn btn-danger">Cancel</a>
+                        <a class="btn btn-primary" name="payUrl" id="pay">Payment</a>
                     </div>
                 </div>
             </div>

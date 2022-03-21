@@ -13,31 +13,7 @@
 
                 </div>
                 <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <h2 class="post-title">Entrance tickets</h2>
-                    <table>
-                        <tr>
-                            <td>Adults:</td>
-                            <td id="price">40.000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>College and University students (with cards issued by Vietnamese higher education
-                                institutions only):</td>
-                            <td id="price">20.000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>Children between the ages of 6 and 16:</td>
-                            <td id="price">10.000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>Disabled people and children under 6 years old</td>
-                            <td id="price">Free</td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- Divider-->
+
                 <hr class="my-4" />
                 <!-- Post preview-->
                 <div class="post-preview">

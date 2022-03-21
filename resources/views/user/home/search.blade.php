@@ -12,15 +12,23 @@
                     <th>Title</th>
                     <th>Sumary</th>
                     <th>Content</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
         <hr class="my-4" />
     </div>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 @stop()
 @section('js')
     <script>
