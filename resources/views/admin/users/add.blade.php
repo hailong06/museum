@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title', 'Add category')
+@section('title', 'Add User')
 @section('main')
     <h1>Add</h1>
     <form action="{{ route('admin.user.store') }}" method="POST" role='form'>

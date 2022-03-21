@@ -47,6 +47,12 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="input-group fil">
+                        <select class="form-control" id="method" name="method">
+                            <option value="vnpay">VnPay</option>
+                            <option value="momo">Momo</option>
+                        </select>
+                    </div>
                     <div class="fil">
                         <input type="button" value="Search" class=" btn btn-primary" id="search-date">
                     </div>
@@ -83,7 +89,7 @@
                         <td>{{ $key->custumer_email }}</td>
                         <td>{{ $key->custumer_phone }}</td>
                         <td>{{ number_format($key->total_money) }}</td>
-                        <td>{{ $key->actual_total }}</td>
+                        <td>{{ number_format($key->actual_total) }}</td>
                         <td>{{ $key->payment_method }}</td>
                         @foreach ($discount_data as $dis_id)
                         @if ($dis_id->id == $key->discount_id)
@@ -96,9 +102,9 @@
                         <td>{{ $key->date }}</td>
                         <td>
                             @if ($key->status == 0)
-                                <span class="badge badge-danger">Private</span>
+                                <span class="badge badge-danger">Unavailable</span>
                             @else
-                                <span class="badge badge-success">Public</span>
+                                <span class="badge badge-success">Available</span>
                             @endif
                         </td>
                         <td>{{ $key->created_at }}</td>
@@ -127,6 +133,7 @@
             var month_order = $('#month').val();
             var date_order = $('#date').val();
             var ticket_date_order = $('#ticket').val();
+            var method_order = $('#method').val();
             event.preventDefault();
 
             $.ajaxSetup({
@@ -142,6 +149,7 @@
                     date_order: date_order,
                     ticket_date_order: ticket_date_order,
                     month_order: month_order,
+                    method_order: method_order,
                 },
                 type: 'json',
                 success: function(data){

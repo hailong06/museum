@@ -1,6 +1,6 @@
 @extends('user.museum')
 @section('main')
-</header>
+    </header>
     <section class="shopping-cart spad">
         @csrf
         <div class="container">
@@ -86,7 +86,7 @@
                         <div class="form-group">
                             <label for="exampleInputPhone1">Phone number</label>
                             <input type="tel" name="userphone" class="form-control" id="userphone"
-                                placeholder="Enter your phone number" pattern="[0][0-9]{9}">
+                                placeholder="Enter your phone number" max="12" pattern="[0][0-9]{9}">
                         </div>
                         <div class="form-group">
                             <a class="btn btn-warning return">Return</a>
@@ -175,6 +175,7 @@
                 method: 'POST',
                 url: "/order-detail",
                 data: {
+                    _token: "{{ csrf_token() }}",
                     date: date,
                     tickets: tickets,
                     username: username,
@@ -200,7 +201,8 @@
 
                             $.ajaxSetup({
                                 headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                        'content')
                                 }
                             });
 
@@ -212,6 +214,7 @@
                                     method: 'POST',
                                     url: "/discount",
                                     data: {
+                                        _token: "{{ csrf_token() }}",
                                         coupon: coupon,
                                     },
                                     type: 'json',
@@ -220,9 +223,14 @@
                                         if (coupon.length == 0) {
                                             swal("Please enter the coupon you want!",
                                                 " ", "error");
-                                            document.getElementById("discount").innerHTML = zero;
-                                            $("#total").removeClass("total");
-                                            document.getElementById( "actual-total").innerHTML = totalActual;
+                                            document.getElementById(
+                                                    "discount").innerHTML =
+                                                zero;
+                                            $("#total").removeClass(
+                                            "total");
+                                            document.getElementById(
+                                                    "actual-total")
+                                                .innerHTML = totalActual;
                                             $("#coupon").val("");
                                             prices = totalActual;
                                         } else {
@@ -231,17 +239,29 @@
                                                 swal("Coupon code does not exist or has expired!",
                                                     "Sorry for the inconvenience",
                                                     "error");
-                                                document.getElementById("discount") .innerHTML = zero;
-                                                $("#total").removeClass("total");
-                                                document.getElementById( "actual-total") .innerHTML = totalActual;
+                                                document.getElementById(
+                                                        "discount")
+                                                    .innerHTML = zero;
+                                                $("#total").removeClass(
+                                                    "total");
+                                                document.getElementById(
+                                                        "actual-total")
+                                                    .innerHTML =
+                                                    totalActual;
                                                 $("#coupon").val("");
                                                 prices = totalActual;
 
                                             } else {
-                                                document.getElementById("discount").innerHTML = reduce;
-                                                $("#total").addClass( "total");
-                                                var price = totalActual - reduce;
-                                                document.getElementById("actual-total").innerHTML = price;
+                                                document.getElementById(
+                                                        "discount")
+                                                    .innerHTML = reduce;
+                                                $("#total").addClass(
+                                                    "total");
+                                                var price = totalActual -
+                                                    reduce;
+                                                document.getElementById(
+                                                        "actual-total")
+                                                    .innerHTML = price;
                                                 prices = price;
                                             }
                                         }
@@ -250,30 +270,54 @@
                             });
 
                             $('#pay').click(function(event) {
-                                var paymentMethod = $('input[name=paymentMethod]:checked').val();
+                                var paymentMethod = $(
+                                    'input[name=paymentMethod]:checked').val();
                                 const coupon = $('#coupon').val();
                                 event.preventDefault();
+                                if (paymentMethod == 'vnpay') {
+                                    $.ajax({
+                                        method: 'POST',
+                                        url: "/payment",
+                                        data: {
+                                            _token: "{{ csrf_token() }}",
+                                            date: date,
+                                            tickets: tickets,
+                                            username: username,
+                                            useremail: useremail,
+                                            userphone: userphone,
+                                            paymentMethod: paymentMethod,
+                                            coupon: coupon,
+                                            totalActual: totalActual,
+                                            prices: prices,
+                                        },
+                                        type: 'json',
+                                        success: function(data) {
+                                            location.href = data.data;
+                                        }
+                                    });
+                                } else if (paymentMethod == 'momo') {
+                                    $.ajax({
+                                        method: 'POST',
+                                        url: "/payment",
+                                        data: {
+                                            _token: "{{ csrf_token() }}",
+                                            date: date,
+                                            tickets: tickets,
+                                            username: username,
+                                            useremail: useremail,
+                                            userphone: userphone,
+                                            paymentMethod: paymentMethod,
+                                            coupon: coupon,
+                                            totalActual: totalActual,
+                                            prices: prices,
+                                        },
+                                        type: 'json',
+                                        success: function(data) {
+                                            location.href = data.payUrl;
+                                        }
+                                    });
+                                }
 
-                                $.ajax({
-                                    method: 'POST',
-                                    url: "/payment",
-                                    data: {
-                                        date: date,
-                                        tickets: tickets,
-                                        username: username,
-                                        useremail: useremail,
-                                        userphone: userphone,
-                                        paymentMethod: paymentMethod,
-                                        coupon: coupon,
-                                        totalActual: totalActual,
-                                        prices: prices,
-                                    },
-                                    type: 'json',
-                                    success: function(data) {
-                                        location.href = data.data;
-                                        // console.log('ok')
-                                    }
-                                });
                             });
                         });
                     }

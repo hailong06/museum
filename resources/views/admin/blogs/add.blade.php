@@ -39,7 +39,7 @@
         </div>
         <div class="form-group">
             <label for="">Content</label>
-            <textarea name="content" id="area1" rows="10" cols="130" placeholder="Enter the content please"></textarea>
+            <textarea name="content" class="form-control my-editor" style="width: 100%;" rows="10" cols="130" placeholder="Enter the content please"></textarea>
             @error('content')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror

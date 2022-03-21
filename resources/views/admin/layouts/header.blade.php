@@ -81,18 +81,33 @@
                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
                        <h6 class="collapse-header">Discount Code List:</h6>
-                       {{-- <a class="collapse-item" href="{{ route('blog.index') }}">Information</a> --}}
-                       {{-- <a class="collapse-item" href="{{ route('blog.create') }}">Add new Blog</a> --}}
+                       <a class="collapse-item" href="{{ route('admin.discount.home') }}">Information</a>
+                       <a class="collapse-item" href="{{ route('admin.discount.create') }}">Add new Discount code</a>
                    </div>
                </div>
            </li>
 
+           <!-- Nav Item - Pages Collapse Menu -->
+           <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#TicketManage"
+                    aria-expanded="true" aria-controls="TicketManage">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Ticket Manage</span>
+                </a>
+                <div id="TicketManage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Ticket List:</h6>
+                        <a class="collapse-item" href="{{ route('admin.ticket.home') }}">Information</a>
+                        <a class="collapse-item" href="{{ route('admin.ticket.create') }}">Add new Ticket</a>
+                    </div>
+                </div>
+            </li>
            <!-- Nav Item - Charts -->
            <li class="nav-item">
                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#SliderManager"
                    aria-expanded="true" aria-controls="SliderManager">
                    <i class="fas fa-fw fa-image"></i>
-                   <span>Slider Manager</span>
+                   <span>Slider Manage</span>
                </a>
                <div id="SliderManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
@@ -108,7 +123,7 @@
                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#OrderManager"
                    aria-expanded="true" aria-controls="OrderManager">
                    <i class="fas fa-fw fa-car"></i>
-                   <span>Order Manager</span>
+                   <span>Order Manage</span>
                </a>
                <div id="OrderManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                    <div class="bg-white py-2 collapse-inner rounded">
@@ -128,7 +143,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#AccountManager"
                     aria-expanded="true" aria-controls="AccountManager">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Account Manager</span>
+                    <span>Account Manage</span>
                 </a>
                 <div id="AccountManager" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">

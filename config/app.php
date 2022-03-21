@@ -21,6 +21,12 @@ return [
 
     'vnp_tmn_code' => env('VNP_TMN_CODE', 'H8ID7CD6'),
 
+    "momo_partnerCode" => env("MOMO_PARTNERCODE", "MOMOBKUN20180529"),
+
+    "momo_accessKey" => env("MOMO_ACCESSKEY", "klm05TvNBzhg7h7j"),
+
+    "momo_secretKey" => env("MOMO_SECRETKEY", "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa"),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -73,7 +79,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +173,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -239,7 +246,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-
+        'Input' => Illuminate\Support\Facades\Input::class,
+        'Charts' => ConsoleTVs\Charts\Charts::class,
 
     ],
 

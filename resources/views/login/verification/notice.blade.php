@@ -17,5 +17,6 @@
                 click here to request another
             </button>.
         </form>
+        <a href="{{ route('login') }}">Back to login</a>
     </div>
 @endsection

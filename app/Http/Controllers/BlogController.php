@@ -13,6 +13,10 @@ class BlogController extends Controller
     {
         $data = Blog::orderBy('created_at', 'DESC')
             ->where('status', BLog::BLOG_PUBLIC)->paginate(3);
+        $blog = Blog::orderBy('created_at', 'DESC')
+            ->select('category_id')
+            ->where('status', BLog::BLOG_PUBLIC)
+            ->get();
         $category = Category::where('status', Category::CATEGORY_PUBLIC)
             ->get();
         if ($search = request()->search) {
@@ -22,6 +26,9 @@ class BlogController extends Controller
             $checked = $_GET['filter'];
             $data = Blog::whereIn('category_id', $checked)
                 ->where('status', BLog::BLOG_PUBLIC)->paginate(3);
+            if ($data->count() == 0){
+                abort(404, 'Page not found');;
+            }
         }
         return view('user.home.blog', compact('data', 'category'));
     }
