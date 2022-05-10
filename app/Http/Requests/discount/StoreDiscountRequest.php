@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\category;
+namespace App\Http\Requests\discount;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class StoreDiscountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,12 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|unique:categories|max:100',
+            'code' =>'required|unique:discounts|max:100',
+            'condition' =>'required|max:100',
+            'reduce' =>'required|max:100',
+            'start' =>'required|before_or_equal:end',
+            'end' =>'required|after_or_equal:start',
             'status' => 'required',
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'name.required'=>'Tên danh mục không để trống',
-            'name.unique'=>'Danh mục này đã có trong CSDl',
         ];
     }
 }

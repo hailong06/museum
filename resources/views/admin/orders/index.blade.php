@@ -89,7 +89,7 @@
                         <td>{{ $key->custumer_email }}</td>
                         <td>{{ $key->custumer_phone }}</td>
                         <td>{{ number_format($key->total_money) }}</td>
-                        <td>{{ $key->actual_total }}</td>
+                        <td>{{ number_format($key->actual_total) }}</td>
                         <td>{{ $key->payment_method }}</td>
                         @foreach ($discount_data as $dis_id)
                         @if ($dis_id->id == $key->discount_id)
@@ -102,9 +102,9 @@
                         <td>{{ $key->date }}</td>
                         <td>
                             @if ($key->status == 0)
-                                <span class="badge badge-danger">Private</span>
+                                <span class="badge badge-danger">Unavailable</span>
                             @else
-                                <span class="badge badge-success">Public</span>
+                                <span class="badge badge-success">Available</span>
                             @endif
                         </td>
                         <td>{{ $key->created_at }}</td>

@@ -9,6 +9,7 @@
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script src="https://cdn.tiny.cloud/1/2pfagd9jiu73qv44mj3lahq7uaoo662iyoppm4osrtvj2sva/tinymce/5/tinymce.min.js"
 referrerpolicy="origin"></script>
+
 <script>
     var route_prefix = "http://127.0.0.1:8000/laravel-filemanager";
     $('#lfm').filemanager('image', {
@@ -56,4 +57,8 @@ referrerpolicy="origin"></script>
 
     tinymce.init(editor_config);
 </script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 @yield('js')

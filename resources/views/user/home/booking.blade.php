@@ -86,7 +86,7 @@
                         <div class="form-group">
                             <label for="exampleInputPhone1">Phone number</label>
                             <input type="tel" name="userphone" class="form-control" id="userphone"
-                                placeholder="Enter your phone number" pattern="[0][0-9]{9}">
+                                placeholder="Enter your phone number" max="12" pattern="[0][0-9]{9}">
                         </div>
                         <div class="form-group">
                             <a class="btn btn-warning return">Return</a>

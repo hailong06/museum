@@ -39,8 +39,8 @@ class BookingController extends Controller
             $request->all(),
             [
                 'username' => 'required|max: 50|min:10',
-                'useremail' => 'required|email|min: 11',
-                'userphone' => 'required|alpha_num|min: 10|max: 15',
+                'useremail' => 'required|email|min: 12',
+                'userphone' => 'required|regex:/(0)[0-9]{9}/|min: 10|max: 12',
                 'date' => 'required|date|after_or_equal:today',
                 "tickets.*" => 'distinct|min:1|max:10',
             ],

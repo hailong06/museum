@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\category;
+namespace App\Http\Requests\ticket;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class UpdateTicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,10 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|unique:categories|max:100',
+            'name' =>'required|max:250|unique:tickets,name,'.request()->id,
+            'price' =>'required',
+            'description' => 'required|max:1000',
             'status' => 'required',
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'name.required'=>'Tên danh mục không để trống',
-            'name.unique'=>'Danh mục này đã có trong CSDl',
         ];
     }
 }

@@ -111,13 +111,12 @@ Route::group(
     ['prefix'=>'admin', 'middleware' => 'auth' ,'as'=>'admin.'], function () {
         Route::group(
             ['middleware' => ['verified']], function () {
+
                 Route::get(
                     'home', [
                         'as'=>'home', 'uses'=>'admin\AdminController@dashboard'
                     ]
                 );
-
-
 
                 Route::group(
                     ['prefix'=>'category','as'=>'category.'], function () {
@@ -213,6 +212,98 @@ Route::group(
                             'update/{id}', [
                                 'as'=>'update',
                                 'uses'=>'admin\BlogController@update'
+                            ]
+                        );
+                    }
+                );
+
+                Route::group(
+                    ['prefix'=>'ticket','as'=>'ticket.'], function () {
+                        Route::get(
+                            'home', [
+                                'as'=>'home',
+                                'uses'=>'admin\TicketController@index'
+                            ]
+                        );
+
+                        Route::get(
+                            'create', [
+                                'as'=>'create',
+                                'uses'=>'admin\TicketController@create'
+                            ]
+                        );
+
+                        Route::post(
+                            'store', [
+                                'as'=>'store',
+                                'uses'=>'admin\TicketController@store'
+                            ]
+                        );
+
+                        Route::get(
+                            'destroy/{id}', [
+                                'as'=>'destroy',
+                                'uses'=>'admin\TicketController@destroy'
+                            ]
+                        );
+
+                        Route::get(
+                            'edit/{id}', [
+                                'as'=>'edit',
+                                'uses'=>'admin\TicketController@edit'
+                            ]
+                        );
+
+                        Route::post(
+                            'update/{id}', [
+                                'as'=>'update',
+                                'uses'=>'admin\TicketController@update'
+                            ]
+                        );
+                    }
+                );
+
+                Route::group(
+                    ['prefix'=>'discount','as'=>'discount.'], function () {
+                        Route::get(
+                            'home', [
+                                'as'=>'home',
+                                'uses'=>'admin\DiscountController@index'
+                            ]
+                        );
+
+                        Route::get(
+                            'create', [
+                                'as'=>'create',
+                                'uses'=>'admin\DiscountController@create'
+                            ]
+                        );
+
+                        Route::post(
+                            'store', [
+                                'as'=>'store',
+                                'uses'=>'admin\DiscountController@store'
+                            ]
+                        );
+
+                        Route::get(
+                            'destroy/{id}', [
+                                'as'=>'destroy',
+                                'uses'=>'admin\DiscountController@destroy'
+                            ]
+                        );
+
+                        Route::get(
+                            'edit/{id}', [
+                                'as'=>'edit',
+                                'uses'=>'admin\DiscountController@edit'
+                            ]
+                        );
+
+                        Route::post(
+                            'update/{id}', [
+                                'as'=>'update',
+                                'uses'=>'admin\DiscountController@update'
                             ]
                         );
                     }
