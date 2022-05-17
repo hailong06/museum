@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\login;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\login\LoginRequest;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\login\LoginRequest;
 
 class AuthController extends Controller
 {
@@ -18,6 +19,16 @@ class AuthController extends Controller
     {
         return view('login.auth.login');
     }
+
+    public function changeLanguage($locale)
+    {
+        App::setLocale($locale);
+
+        session()->put('locale', $locale);
+
+        return redirect()->back();
+    }
+
     public function login(LoginRequest $request)
     {
         $login = $request->only('email', 'password');

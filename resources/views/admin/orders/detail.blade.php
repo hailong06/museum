@@ -1,13 +1,13 @@
 @extends('admin.master')
 @section('title', 'Order Detai')
 @section('main')
-    <h1>Order Detail</h1>
+    <h1>{{ __('messages.orderDetail') }}</h1>
     <table class="table">
         <thead>
             <tr>
-                <td>Order Code</td>
-                <td>Ticket</td>
-                <td>Quantity</td>
+                <td>{{ __('messages.orderCode') }}</td>
+                <td>{{ __('messages.ticket_name') }}</td>
+                <td>{{ __('messages.quantity') }}</td>
             </tr>
         </thead>
         <tbody>
@@ -26,5 +26,5 @@
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('admin.order.home') }}" class="btn btn-primary">Back</a>
+    <a href="{{ route('admin.order.home') }}" class="btn btn-primary">{{ __('messages.back') }}</a>
 @stop

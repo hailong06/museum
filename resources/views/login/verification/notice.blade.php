@@ -2,21 +2,21 @@
 
 @section('content')
     <div class="bg-light p-5 rounded">
-        <h1>Dashboard</h1>
+        <h1>{{ __('messages.login') }}</h1>
 
         @if (session('resent'))
             <div class="alert alert-success" role="alert">
-                A fresh verification link has been sent to your email address.
+                {{ __('messages.loginAlert1') }}
             </div>
         @endif
 
-        Before proceeding, please check your email for a verification link. If you did not receive the email,
+        {{ __('messages.loginAlert2') }}
         <form action="{{ route('verification.resend') }}" method="POST" class="d-inline">
             @csrf
             <button type="submit" class="d-inline btn btn-link p-0">
-                click here to request another
+                {{ __('messages.loginAlert3') }}
             </button>.
         </form>
-        <a href="{{ route('login') }}">Back to login</a>
+        <a href="{{ route('login') }}">{{ __('messages.backToLogin') }}</a>
     </div>
 @endsection

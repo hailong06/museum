@@ -20,7 +20,7 @@
                                     <h2 class="card-title">{{ $blogs->title }}</h2>
                                     <p class="card-text">{{ $blogs->sumary }}</p>
                                     <p class="form-card-css">{!! Str::limit($blogs->content, 200) !!}</p>
-                                    <a class="btn btn-primary" href="{{ route('blog-detail', $blogs->id) }}">Read more →</a>
+                                    <a class="btn btn-primary" href="{{ route('blog-detail', $blogs->id) }}">{{ __('messages.read_more') }}</a>
                                 </div>
                             </div>
                             @endforeach

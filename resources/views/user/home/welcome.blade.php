@@ -44,7 +44,7 @@
                             <h4 class="card-title">{{ $datas->title }}</h4>
                             <h5 class="card-text">{{ $datas->sumary }}</h5><br>
                             <p class="form-card-css">{!! Str::limit($datas->content, 200) !!}</p>
-                            <a href="{{ route('blog-detail', $datas->id) }}" class="btn btn-primary">Read more</a>
+                            <a href="{{ route('blog-detail', $datas->id) }}" class="btn btn-primary">{{ __('messages.read_more') }}</a>
                         </div>
                     </div>
 

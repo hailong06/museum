@@ -6,7 +6,7 @@
             <div class="fil">
                 <form action="" method="get" class="form-inline fil">
                     <div class="form-group">
-                        <input class="form-control" name="search" placeholder="Search code order">
+                        <input class="form-control" name="search" placeholder="{{ __('messages.search') }}">
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-search"></i>
@@ -16,7 +16,7 @@
             <div class="fil">
                 <form action="" method="get" class="form-inline fil">
                     <div class="form-group">
-                        <span>Search booing date:  <input type="date" class="form-control" name="bookingDate"></span>
+                        <span> {{ __('messages.searchBookingDate') }} <input type="date" class="form-control" name="bookingDate"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-search"></i>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="input-group fil">
                         <select name="month" onclick="clearDate()" id="month" class="form-control">
-                            <option value="">Search months--</option>
+                            <option value="">{{ __('messages.searchM') }}</option>
                             @for ($month = 01; $month <= 12; $month++)
                                 <option value="{{ $month }}" checked>{{ $month }}</option>
                             @endfor
@@ -41,7 +41,7 @@
                     </div>
                     <div class="input-group fil">
                         <select class="form-control" id="ticket" name="ticket">
-                            <option value="">Search tickets--</option>
+                            <option value="">{{ __('messages.searchTicket') }}</option>
                             @foreach ($ticket_data as $items)
                                 <option value="{{ $items->id }}">{{ $items->name }}</option>
                             @endforeach
@@ -60,25 +60,25 @@
             </form>
         </div>
         <div align="center" id="count" class='fil'>
-            <label>Number of data:
+            <label>{{ __('messages.numberOfData') }}
                 <span id="count_data">{{ $count_data }}</span>
             </label>
         </div>
         <table class="table table-hover" style="padding: 10px 15px">
             <thead>
                 <tr>
-                    <td>Code Order</td>
-                    <td>Customer Name</td>
-                    <td>Customer Email</td>
-                    <td>Customer Phone</td>
-                    <td>Total Money</td>
-                    <td>Actual Money</td>
-                    <td>Payment method</td>
-                    <td>Discount Code</td>
-                    <td>Date</td>
-                    <td>Status</td>
-                    <td>Created Date</td>
-                    <td class="text-right">Action</td>
+                    <td>{{ __('messages.code_orders') }}</td>
+                    <td>{{ __('messages.cusName') }}</td>
+                    <td>{{ __('messages.cusEmail') }}</td>
+                    <td>{{ __('messages.cusPhone') }}</td>
+                    <td>{{ __('messages.totalMoney') }}</td>
+                    <td>{{ __('messages.actualMoney') }}</td>
+                    <td>{{ __('messages.payment_method') }}</td>
+                    <td>{{ __('messages.discount') }}</td>
+                    <td>{{ __('messages.date') }}</td>
+                    <td>{{ __('messages.status') }}</td>
+                    <td>{{ __('messages.createdDate') }}</td>
+                    <td class="text-right">{{ __('messages.action') }}</td>
                 </tr>
             </thead>
             <tbody>
@@ -102,15 +102,15 @@
                         <td>{{ $key->date }}</td>
                         <td>
                             @if ($key->status == 0)
-                                <span class="badge badge-danger">Unavailable</span>
+                                <span class="badge badge-danger">{{ __('messages.unavailable') }}</span>
                             @else
-                                <span class="badge badge-success">Available</span>
+                                <span class="badge badge-success">{{ __('messages.available') }}</span>
                             @endif
                         </td>
                         <td>{{ $key->created_at }}</td>
                         <td class="text-right">
                             <a href="{{ route('admin.order.detail', $key->id) }}" class="btn btn-sm btn-success">
-                                Detail
+                                {{ __('messages.detail') }}
                             </a>
                         </td>
                     </tr>

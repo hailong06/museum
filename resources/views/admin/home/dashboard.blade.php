@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('title', 'Dashboard')
 @section('main')
-    <h1>Hello {{ Auth::user()->name }}</h1>
+    <h1>{{ __('messages.hello') }} {{ Auth::user()->name }}</h1>
     <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -10,11 +10,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)</div>
+                                {{ __('messages.earningMonth') }} </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 @foreach ($month_total as $month_totals)
                                     @if ($month_totals == null)
-                                        No order yet
+                                    {{ __('messages.noOrderYet') }}
                                     @else
                                         {{ number_format($month_totals) }}
                                     @endif
@@ -36,11 +36,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Today)</div>
+                                {{ __('messages.earningToday') }}</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 @foreach ($today_total as $today_totals)
                                     @if ($today_totals == null)
-                                        No order yet
+                                    {{ __('messages.noOrderYet') }}
                                     @else
                                         {{ number_format($today_totals) }}
                                     @endif
@@ -61,14 +61,14 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Number of Orders (MONTHLY)
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">{{ __('messages.numberOfOrderM') }}
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                         @foreach ($orders as $order)
                                             @if ($order == null)
-                                                No order yet
+                                            {{ __('messages.noOrderYet') }}
                                             @else
                                                 {{ number_format($order) }}
                                             @endif
@@ -98,11 +98,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Number of Staf (MONTHLY)</div>
+                                {{ __('messages.numberOfStafM') }}</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 @foreach ($user as $users)
                                     @if ($users == null)
-                                        No new staffs
+                                    {{ __('messages.noNewStaffs') }}
                                     @else
                                         {{ $users }}
                                     @endif
@@ -133,7 +133,7 @@ var data_order = {!! json_encode($datas) !!};
                 type: 'column'
             },
             title: {
-                text: 'Monthly Total Sale'
+                text: "{{ __('messages.totalSale') }}"
             },
             xAxis: {
                 categories: [

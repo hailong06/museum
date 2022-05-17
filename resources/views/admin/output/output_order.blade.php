@@ -19,15 +19,15 @@
     <td>{{ $key->date }}</td>
     <td>
         @if ($key->status == 0)
-            <span class="badge badge-danger">Private</span>
+            <span class="badge badge-danger">{{ __('messages.private') }}</span>
         @else
-            <span class="badge badge-success">Public</span>
+            <span class="badge badge-success">{{ __('messages.public') }}</span>
         @endif
     </td>
     <td>{{ $key->created_at }}</td>
     <td class="text-right">
         <a href="{{ route('admin.order.detail', $key->id) }}" class="btn btn-sm btn-success">
-            Detail
+            {{ __('messages.detail') }}
         </a>
     </td>
 </tr>

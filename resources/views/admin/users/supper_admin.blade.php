@@ -8,17 +8,17 @@
                 @csrf
                 <div class="fil">
                     <div class="form-group">
-                        <input class="form-control" id="search" name="search" placeholder="Search name">
+                        <input class="form-control" id="search" name="search" placeholder="{{ __('messages.searchName') }}">
                     </div>
                 </div>
                 <div class="input-group fil">
                     <select name="user" id="user" class="form-control">
-                        <option value="0">User</option>
+                        <option value="0">{{ __('messages.useruser') }}</option>
                         @if (Auth::user()->role == $role_super)
-                        <option value="1">SuperAdmin</option>
+                        <option value="1">{{ __('messages.superAdmin') }}</option>
                         @endif
-                        <option value="2">Admin</option>
-                        <option value="3">Staff</option>
+                        <option value="2">{{ __('messages.admin') }}</option>
+                        <option value="3">{{ __('messages.staff') }}</option>
                     </select>
                 </div>
                 <div class="fil">
@@ -31,21 +31,21 @@
     </div>
     </div>
     <div align="center" id="count" class='fil'>
-        <label>Number of data:
+        <label>{{ __('messages.numberOfData') }}
             <span id="count_data">{{ $count_data }}</span>
         </label>
     </div>
     <table id="datatable" class="table table-hover">
         <thead>
             <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Address</td>
-                <td>Phone</td>
-                <td>Created Date</td>
-                <td>Updated Date</td>
-                <td class="text-right">Action</td>
+                <td>{{ __('messages.id') }}</td>
+                <td>{{ __('messages.name') }}</td>
+                <td>{{ __('messages.email') }}</td>
+                <td>{{ __('messages.address') }}</td>
+                <td>{{ __('messages.phone') }}</td>
+                <td>{{ __('messages.createdDate') }}</td>
+                <td>{{ __('messages.updatedDate') }}</td>
+                <td class="text-right">{{ __('messages.action') }}</td>
             </tr>
         </thead>
         <tbody>
@@ -92,7 +92,7 @@
             var _href = $(this).attr('href');
             $('form#form-delete').attr('action', _href);
 
-            if (confirm('Are you sure about that?')) {
+            if (confirm("{{ __('messages.questDelete') }}")) {
                 $('form#form-delete').submit();
             }
 
