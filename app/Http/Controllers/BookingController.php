@@ -44,15 +44,6 @@ class BookingController extends Controller
                 'date' => 'required|date|after_or_equal:today',
                 "tickets.*" => 'distinct|min:1|max:10',
             ],
-            [
-                'username.required' => 'No name to blank',
-                'username.max' => 'Can only enter up to 50 characters',
-                'useremail.required' => 'No email to blank',
-                'useremail.email' => 'Please enter correct email format',
-                'userphone.required' => 'No phone-number to blank',
-                'userphone.min' => 'Phone number cannot be less than 10 characters',
-                'userphone.max' => 'Phone number cannot be more than 15 characters',
-            ]
         );
         if ($validate->fails()) {
             $hasError = $validate->errors();

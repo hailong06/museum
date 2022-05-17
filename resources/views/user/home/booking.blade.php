@@ -7,18 +7,18 @@
             <form id="form-booking">
                 <div class="row form form-ticket">
                     <div class="col-lg-12">
-                        <label for="date">Choose your date</label>
+                        <label for="date">{{ __('messages.choose_date') }}</label>
                         <input type="date" name="date" id="date" class="form-control">
                         <div class="cart-table">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Ticket Name</th>
-                                        <th>Description</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                        <th>Resert</th>
+                                        <th>{{ __('messages.ticket_name') }}</th>
+                                        <th>{{ __('messages.description') }}</th>
+                                        <th>{{ __('messages.price') }}</th>
+                                        <th>{{ __('messages.quantity')}}</th>
+                                        <th>{{ __('messages.total') }}</th>
+                                        <th>{{ __('messages.reset') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody id="listTicket">
@@ -60,9 +60,9 @@
                             <div class="col-lg-4 offset-lg-8">
                                 <div class="proceed-checkout">
                                     <ul>
-                                        <h4>Total: </h4>
+                                        <h4>{{ __('messages.total') }}:</h4>
                                         <li class="cart-total">0</li>
-                                        <a class="btn btn-success next">NEXT</a>
+                                        <a class="btn btn-success next">{{ __('messages.next') }}</a>
                                     </ul>
                                 </div>
                             </div>
@@ -72,25 +72,25 @@
                 <div class="row form form-infor" id="form-infor">
                     <div class="col-lg-12">
                         @csrf
-                        <h3 align="center">Information</h3>
+                        <h3 align="center">{{ __('messages.information') }}</h3>
                         <div class="form-group">
-                            <label for="exampleInputName1">Name</label>
+                            <label for="exampleInputName1">{{ __('messages.name') }}</label>
                             <input type="text" name="username" class="form-control" id="username"
-                                placeholder="Enter your name">
+                                placeholder="{{ __('messages.place_name') }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
+                            <label for="exampleInputEmail1">{{ __('messages.email') }}</label>
                             <input type="email" name="useremail" class="form-control" id="useremail"
-                                placeholder="Enter email">
+                                placeholder="{{ __('messages.place_email') }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPhone1">Phone number</label>
+                            <label for="exampleInputPhone1">{{ __('messages.phone') }}</label>
                             <input type="tel" name="userphone" class="form-control" id="userphone"
-                                placeholder="Enter your phone number" max="12" pattern="[0][0-9]{9}">
+                                placeholder="{{ __('messages.place_phone') }}" max="12" pattern="[0][0-9]{9}">
                         </div>
                         <div class="form-group">
-                            <a class="btn btn-warning return">Return</a>
-                            <button type="sumbit" class="btn btn-primary detail">Information detail</button>
+                            <a class="btn btn-warning return">{{ __('messages.return') }}</a>
+                            <button type="sumbit" class="btn btn-primary detail">{{ __('messages.information_detail') }}</button>
                         </div>
                     </div>
                 </div>
@@ -123,11 +123,11 @@
                 event.preventDefault();
                 var date = $('input[id=date]').val();
                 if (date.length == 0) {
-                    swal("Please select date you want!", " ", "error");
+                    swal("{{ __('messages.error_date') }}!", " ", "error");
                 } else if (isError == false) {
-                    swal("Please select ticket you want!", " ", "error");
+                    swal("{{ __('messages.error_ticket') }}!", " ", "error");
                 } else if (isErrorDate == false) {
-                    swal("Please choose the correct date format!", " ", "error");
+                    swal("{{ __('messages.error_date_format') }}!", " ", "error");
                 } else {
                     $(".form-infor").show();
                     $(".form-ticket").hide();

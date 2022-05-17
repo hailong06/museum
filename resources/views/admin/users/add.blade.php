@@ -1,58 +1,58 @@
 @extends('admin.master')
 @section('title', 'Add User')
 @section('main')
-    <h1>Add</h1>
+    <h1>{{ __('messages.addUser') }}</h1>
     <form action="{{ route('admin.user.store') }}" method="POST" role='form'>
         @csrf
         <div class="form-group">
-            <label for="">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Input your name">
+            <label for="">{{ __('messages.name') }}</label>
+            <input type="text" class="form-control" name="name" placeholder="{{ __('messages.placeNameUser') }}">
             @error('name')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Email</label>
-            <input type="text" class="form-control" name="email" placeholder="Input your email ">
+            <label for="">{{ __('messages.email') }}</label>
+            <input type="text" class="form-control" name="email" placeholder="{{ __('messages.placeEmailUser') }}">
             @error('email')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Input your password">
+            <label for="">{{ __('messages.loginPassword') }}</label>
+            <input type="password" class="form-control" name="password" placeholder="{{ __('messages.placePasswordUser') }}">
             @error('password')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Address</label>
-            <input type="text" class="form-control" name="address" placeholder="Input your address">
+            <label for="">{{ __('messages.address') }}</label>
+            <input type="text" class="form-control" name="address" placeholder="{{ __('messages.placeAddressUser') }}">
             @error('address')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Phone</label>
-            <input type="string" class="form-control" name="phone" placeholder="Input your phone">
+            <label for="">{{ __('messages.phone') }}</label>
+            <input type="string" class="form-control" name="phone" placeholder="{{ __('messages.placePhoneUser') }}">
             @error('phone')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Role</label>
+            <label for="">{{ __('messages.role') }}</label>
             <select name="role" class="form-control">
-                <option value="">Select one--</option>
-                <option value="0">User</option>
-                <option value="1">Supper Admin</option>
-                <option value="2">Admin</option>
-                <option value="3">Staff</option>
+                <option value="">{{ __('messages.selectOne') }}</option>
+                <option value="0">{{ __('messages.useruser') }}</option>
+                <option value="1">{{ __('messages.superAdmin') }}</option>
+                <option value="2">{{ __('messages.admin') }}</option>
+                <option value="3">{{ __('messages.staff') }}</option>
             </select>
             @error('role')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Save Data</button>
+        <button type="submit" class="btn btn-primary">{{ __('messages.saveData') }}</button>
     </form>
 
 

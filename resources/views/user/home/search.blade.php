@@ -1,17 +1,18 @@
 @extends('user.museum')
 @section('main')
-</header>
+    </header>
     <div class="container">
         <div class="form-group" align="center">
-            <input type="text" name="search" id="live_search" class="form-control" placeholder="Search Customer Data" />
+            <input type="text" name="search" id="live_search" class="form-control"
+                placeholder="{{ __('messages.searchPlace') }}" />
         </div>
-        <h3 align="center">Total Data : <span id="total_records"></span></h3>
+        <h3 align="center">{{ __('messages.totalData') }}: <span id="total_records"></span></h3>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Sumary</th>
-                    <th>Content</th>
+                    <th>{{ __('messages.title') }}</th>
+                    <th>{{ __('messages.sumary') }}</th>
+                    <th>{{ __('messages.content') }}</th>
                     <th></th>
                 </tr>
             </thead>

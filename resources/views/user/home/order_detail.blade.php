@@ -7,23 +7,23 @@
         <div class="col-lg-6">
             <table>
                 <tr>
-                    <td>Date:</td>
+                    <td>{{ __('messages.choose_date') }}</td>
                     <td>{{ $posts['date'] }}</td>
                 </tr>
                 <tr>
-                    <td>Name:</td>
+                    <td>{{ __('messages.name') }}</td>
                     <td>{{ $posts['username'] }}</td>
                 </tr>
                 <tr>
-                    <td>Email:</td>
+                    <td>{{ __('messages.email') }}</td>
                     <td>{{ $posts['useremail'] }}</td>
                 </tr>
                 <tr>
-                    <td>Phone number:</td>
+                    <td>{{ __('messages.phone') }}</td>
                     <td>{{ $posts['userphone'] }}</td>
                 </tr>
                 <tr>
-                    <td>Payment method:</td>
+                    <td>{{ __('messages.payment_method') }}</td>
 
                     <td><input type="radio" required name="paymentMethod" value="momo"> Momo
                         <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="" height="30"
@@ -43,15 +43,15 @@
         <p></p>
         <div class="containe">
             <div class="col-lg-12">
-                <h3 align="center">Ticket information</h3>
+                <h3 align="center">{{ __('messages.ticket_infor') }}</h3>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Ticket name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total money</th>
+                            <th scope="col">{{ __('messages.ticket_name') }}</th>
+                            <th scope="col">{{ __('messages.price') }}</th>
+                            <th scope="col">{{ __('messages.quantity') }}</th>
+                            <th scope="col">{{ __('messages.total') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,24 +70,24 @@
                 <div class="col-lg-4 offset-lg-8">
                     <div class="proceed-checkout">
                         <ul>
-                            <input type="text" placeholder="Input your discount coupon" name="coupon" id="coupon">
+                            <input type="text" placeholder="{{ __('messages.place_coupon') }}" name="coupon" id="coupon">
                             <br>
                             <p></p>
-                            <a class="btn btn-success" id="apply">Apply</a>
-                            <h5>Discount:</h5>
+                            <a class="btn btn-success" id="apply">{{ __('messages.apply') }}</a>
+                            <h5>{{ __('messages.discount') }}:</h5>
                             <li id="discount" name="discount" value="0">0</li>
                         </ul>
                         <ul>
-                            <h4>Total: </h4>
+                            <h4>{{ __('messages.total') }}: </h4>
                             <li id="total" name="total">{{ number_format(array_sum($total)) }}</li>
                         </ul>
                         <ul>
-                            <h4>Payment Total: </h4>
+                            <h4>{{ __('messages.payment_total') }}: </h4>
                             <li id="actual-total" name="tickets_actual_total">{{ number_format(array_sum($total)) }}
                             </li>
                         </ul>
-                        <a href="{{ route('booking') }}" class="btn btn-danger">Cancel</a>
-                        <a class="btn btn-primary" name="payUrl" id="pay">Payment</a>
+                        <a href="{{ route('booking') }}" class="btn btn-danger">{{ __('messages.cancel') }}</a>
+                        <a class="btn btn-primary" name="payUrl" id="pay">{{ __('messages.payment') }}</a>
                     </div>
                 </div>
             </div>

@@ -79,6 +79,14 @@ Route::post('login', ['as'=>'login', 'uses'=>'login\AuthController@login'])
 Route::get('logout', ['as'=>'logout', 'uses'=>'login\AuthController@destroy'])
         ->middleware('auth');
 
+// Route::get('change-language/{language}', 'login\AuthController@changeLanguage')
+//     ->name('login.change-language');
+
+// Route::get(
+//     'change-language/{language}', [
+//     'as'=>'login.change-language', 'uses'=>'login\AuthController@changeLanguage'
+//     ]
+// );
 Route::group(
     ['middleware' => ['auth']], function () {
 
@@ -107,6 +115,17 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+// Route::get('change-language/{language}', 'login\AuthController@changeLanguage', 'as'=>'hello')
+//     ->name('hello');
+    // Route::get(
+    //     'change-language/{language}', [
+    //         'as'=>'hello',
+    //         'uses'=>'login\AuthController@changeLanguage'
+    //     ]
+    // );
+Route::get('change-language/{language}', 'HomeController@changeLanguage')
+    ->name('user.change-language');
+
 Route::group(
     ['prefix'=>'admin', 'middleware' => 'auth' ,'as'=>'admin.'], function () {
         Route::group(
@@ -117,6 +136,13 @@ Route::group(
                         'as'=>'home', 'uses'=>'admin\AdminController@dashboard'
                     ]
                 );
+
+                Route::get(
+                        'change-language/{language}', [
+                            'as'=>'changeLanguage',
+                            'uses'=>'admin\AdminController@changeLanguage'
+                        ]
+                    );
 
                 Route::group(
                     ['prefix'=>'category','as'=>'category.'], function () {

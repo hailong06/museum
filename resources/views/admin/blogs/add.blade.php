@@ -1,13 +1,13 @@
 @extends('admin.master')
 @section('title', 'Add BLog')
 @section('main')
-    <h1>Add Blog</h1>
+    <h1>{{ __('messages.title') }}</h1>
     <form action="{{ route('admin.blog.store') }}" method="POST" enctype='multipart/form-data'>
         @csrf
         <div class="form-group">
-            <label for="">Category</label>
+            <label for="">{{ __('messages.category') }}</label>
             <select name="category_id" class="form-control">
-                <option value="">Select one--</option>
+                <option value="">{{ __('messages.selectOne') }}</option>
                 @foreach ($category_id as $categories)
                     <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                 @endforeach
@@ -17,43 +17,43 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Title</label>
-            <input type="text" class="form-control" name="title" placeholder="Input your title">
+            <label for="">{{ __('messages.title') }}</label>
+            <input type="text" class="form-control" name="title" placeholder="{{ __('messages.placeTitleBlog') }}">
             @error('title')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Image</label>
+            <label for="">{{ __('messages.imageBlog') }}</label>
             <input type="file" class="form-control-file" name="image">
             @error('image')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Sumary</label>
-            <input type="text" class="form-control" name="sumary" placeholder="Input your sumary">
+            <label for="">{{ __('messages.sumary') }}</label>
+            <input type="text" class="form-control" name="sumary" placeholder="{{ __('messages.placeSumaryBlog') }}">
             @error('sumary')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="">Content</label>
-            <textarea name="content" class="form-control my-editor" style="width: 100%;" rows="10" cols="130" placeholder="Enter the content please"></textarea>
+            <label for="">{{ __('messages.content') }}</label>
+            <textarea name="content" class="form-control my-editor" style="width: 100%;" rows="10" cols="130" placeholder="{{ __('messages.placeContentBlog') }}"></textarea>
             @error('content')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
         <div class="form-group">
-            <label for="" >Status</label>
+            <label for="" >{{ __('messages.status') }}</label>
             <select name="status" class="custom-select">
-                    <option value="0">private</option>
-                    <option value="1">public</option>
+                    <option value="0">{{ __('messages.private') }}</option>
+                    <option value="1">{{ __('messages.public') }}</option>
             </select>
             @error('status')
                 <small style="color:red" class="help-block">{{ $message }}</small>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Save Blog</button>
+        <button type="submit" class="btn btn-primary">{{ __('messages.saveData') }}</button>
     </form>
 @stop

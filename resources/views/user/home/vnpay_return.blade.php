@@ -4,42 +4,42 @@
     @csrf
     <div class="container">
         <div class="header clearfix">
-            <h1>Information line </h1>
+            <h1>{{ __('messages.information') }}</h1>
         </div>
-        <br><h4 style="color: red; font-style  : italic">*Please double check the ticket information in the email</h4>
+        <br><h4 style="color: red; font-style  : italic">{{ __('messages.inforBill_note') }}</h4>
         <br>
         <div class="table-responsive">
             <div class="form-group">
-                <label>Code orders:</label>
+                <label>{{ __('messages.code_orders') }}:</label>
                 <label>{{ $_GET['vnp_TxnRef'] }}</label>
             </div>
             <div class="form-group">
 
-                <label>Price:</label>
+                <label>{{ __('messages.price') }}:</label>
                 <label>{{ number_format($_GET['vnp_Amount'] / 100) }} VNĐ</label>
             </div>
             <div class="form-group">
-                <label>Content billing:</label>
+                <label>{{ __('messages.contentBill') }}:</label>
                 <label>{{ $_GET['vnp_OrderInfo'] }}</label>
             </div>
             <div class="form-group">
-                <label>Response Code:</label>
+                <label>{{ __('messages.responseCode') }}:</label>
                 <label>{{ $_GET['vnp_ResponseCode'] }}</label>
             </div>
             <div class="form-group">
-                <label>Transaction code at VNPAY:</label>
+                <label>{{ __('messages.transactionCode') }}:</label>
                 <label>{{ $_GET['vnp_TransactionNo'] }}</label>
             </div>
             <div class="form-group">
-                <label>Bank code:</label>
+                <label>{{ __('messages.bankCode') }}:</label>
                 <label>{{ $_GET['vnp_BankCode'] }}</label>
             </div>
             <div class="form-group">
-                <label>Payment time:</label>
+                <label>{{ __('messages.payTime') }}:</label>
                 <label>{{ $_GET['vnp_PayDate'] }}</label>
             </div>
             <div class="form-group">
-                <label>Kết quả:</label>
+                <label>{{ __('messages.mesBill') }}:</label>
                 <label>
                     @php
                         $vnp_SecureHash = $_GET['vnp_SecureHash'];
@@ -68,19 +68,19 @@
 
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
-                                echo "<span style='color:blue'>Successfull transaction</span>";
+                                echo "<span style='color:blue'>{{ __('messages.payment_success') }}</span>";
                             } else {
-                                echo "<span style='color:red'>Transaction failed</span>";
+                                echo "<span style='color:red'>{{ __('messages.payment_fail') }}</span>";
                             }
                         } else {
-                            echo "<span style='color:red'>Chu ky khong hop le</span>";
+                            echo "<span style='color:red'>{{ __('messages.invalid_signature') }}</span>";
                         }
                     @endphp
 
                 </label>
             </div>
         </div>
-        <a href="{{ route('welcome') }}" class="btn btn-primary">Back to the home page</a>
+        <a href="{{ route('welcome') }}" class="btn btn-primary">{{ __('messages.backToHome') }}</a>
     </div>
     <br>
 @stop()

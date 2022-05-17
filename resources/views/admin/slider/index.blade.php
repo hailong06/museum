@@ -4,7 +4,7 @@
 
     <form action="" method="get" class="form-inline">
         <div class="form-group">
-            <input class="form-control" name="search" placeholder="Search">
+            <input class="form-control" name="search" placeholder="{{ __('messages.search') }}">
         </div>
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-search"></i>
@@ -13,16 +13,16 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <td>Id</td>
-                <td>User</td>
-                <td>Name</td>
-                <td>Image</td>
-                <td>Description</td>
-                <td>Status</td>
-                <td>Link</td>
-                <td>Created Date</td>
-                <td>Updated Date</td>
-                <td class="text-right">Action</td>
+                <td>{{ __('messages.id') }}</td>
+                <td>{{ __('messages.user') }}</td>
+                <td>{{ __('messages.name') }}</td>
+                <td>{{ __('messages.imageBlog') }}</td>
+                <td>{{ __('messages.description') }}</td>
+                <td>{{ __('messages.status') }}</td>
+                <td>{{ __('messages.link') }}</td>
+                <td>{{ __('messages.createdDate') }}</td>
+                <td>{{ __('messages.updatedDate') }}</td>
+                <td class="text-right">{{ __('messages.action') }}</td>
             </tr>
         </thead>
         <tbody>
@@ -42,9 +42,9 @@
                     <td>{{ $slider->description }}</td>
                     <td>
                         @if ($slider->status == 0)
-                            <span class="badge badge-danger">Private</span>
+                            <span class="badge badge-danger">{{ __('messages.private') }}</span>
                         @else
-                            <span class="badge badge-success">Public</span>
+                            <span class="badge badge-success">{{ __('messages.public') }}</span>
                         @endif
                     </td>
                     <td>{{ $slider->link }}</td>
@@ -82,7 +82,7 @@
             var _href = $(this).attr('href');
             $('form#form-delete').attr('action', _href);
 
-            if (confirm('Are you sure about that?')) {
+            if (confirm("{{ __('messages.questDelete') }}")) {
                 $('form#form-delete').submit();
             }
 
