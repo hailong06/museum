@@ -113,6 +113,9 @@ class DiscountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Discount::findOrFail($id);
+        $category->delete();
+        return redirect()->route('admin.discount.home')
+            ->with('success', 'Delete this product success');
     }
 }
