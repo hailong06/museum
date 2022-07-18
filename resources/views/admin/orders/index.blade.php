@@ -75,7 +75,7 @@
                     <td>{{ __('messages.actualMoney') }}</td>
                     <td>{{ __('messages.payment_method') }}</td>
                     <td>{{ __('messages.discount') }}</td>
-                    <td>{{ __('messages.date') }}</td>
+                    <td>{{ __('messages.dateBooking') }}</td>
                     <td>{{ __('messages.status') }}</td>
                     <td>{{ __('messages.createdDate') }}</td>
                     <td class="text-right">{{ __('messages.action') }}</td>
@@ -91,14 +91,7 @@
                         <td>{{ number_format($key->total_money) }}</td>
                         <td>{{ number_format($key->actual_total) }}</td>
                         <td>{{ $key->payment_method }}</td>
-                        @foreach ($discount_data as $dis_id)
-                        @if ($dis_id->id == $key->discount_id)
-                        <td>{{ $dis_id->code }}</td>
-                        @elseif ($key->discount_id === null)
-                        <td></td>
-                        @break
-                        @endif
-                        @endforeach
+                        <td>{{ $key->discount_id }}</td>
                         <td>{{ $key->date }}</td>
                         <td>
                             @if ($key->status == 0)

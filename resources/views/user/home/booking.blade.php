@@ -236,8 +236,8 @@
                                         } else {
                                             var reduce = data.reduce;
                                             if (reduce == 0) {
-                                                swal("Coupon code does not exist or has expired!",
-                                                    "Sorry for the inconvenience",
+                                                swal("{{ __('messages.codeCouponErr1') }}",
+                                                    "{{ __('messages.codeCouponErr2') }}",
                                                     "error");
                                                 document.getElementById(
                                                         "discount")

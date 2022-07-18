@@ -25,7 +25,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
+        $tickets = Ticket::where('status', Ticket::TICKET_PUBLIC)->get();
         return view('user.home.booking', compact('tickets'));
     }
     /**
@@ -357,7 +357,7 @@ class BookingController extends Controller
                             $message->from($to_email, $to_name);
                         }
                     );
-                    session()->flush();
+
                     return view('user.home.vnpay_return');
                 } catch (Exception $exception) {
                     $request->session()->flash('message', 'ERROR! AN ERROR OCCURRED. PLEASE TRY AGAIN LATER!');
@@ -398,6 +398,7 @@ class BookingController extends Controller
     {
         $infor = $request->session()->all();
         $check_order_code = DB::table('orders')->where('code_order', $infor['orderId'])->exists();
+
         if ($check_order_code == true) {
             $tickets = Ticket::all();
             return view('user.home.booking', compact('tickets'));
@@ -487,7 +488,7 @@ class BookingController extends Controller
                             $message->from($to_email, $to_name);
                         }
                     );
-                    session()->flush();
+
                     return view('user.home.momo_return');
                 } catch (Exception $exception) {
                     session()->flush();
