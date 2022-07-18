@@ -329,4 +329,7 @@ return [
     'placeAddressUser' => 'Nhập địa chỉ',
     'placePhoneUser' => 'Nhập số điện thoại',
     'placePasswordUser' => 'Nhập mật khẩu',
+    'dateBooking' => 'Ngày đặt',
+    'codeCouponErr1' => 'Mã phiếu thưởng không tồn tại hoặc đã hết hạn!',
+    'codeCouponErr2' => 'Xin lỗi về sự bất tiện!',
 ];

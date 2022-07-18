@@ -68,12 +68,13 @@
 
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
-                                echo "<span style='color:blue'>{{ __('messages.payment_success') }}</span>";
+
+                                echo "<span style='color:blue'>Successfull transaction</span>";
                             } else {
-                                echo "<span style='color:red'>{{ __('messages.payment_fail') }}</span>";
+                                echo "<span style='color:red'>Transaction failed</span>";
                             }
                         } else {
-                            echo "<span style='color:red'>{{ __('messages.invalid_signature') }}</span>";
+                            echo "<span style='color:red'>{{ __('messages.Invalid signature') }}</span>";
                         }
                     @endphp
 
